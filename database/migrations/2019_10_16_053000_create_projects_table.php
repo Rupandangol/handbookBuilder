@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->Increments('id');
             $table->string('projectName')->nullable();
             $table->string('editContentNo');
+            $table->string('projectStatus')->nullable();
             $table->string('project_created_by')->nullable();
             $table->timestamps();
         });

@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/AdminLogin','loginController@loginPage')->name('loginPage');
+Route::post('/AdminLogin','loginController@loginPageAction');
+
 
 Route::group(['prefix' => '@admin@'], function () {
 
@@ -34,9 +37,14 @@ Route::group(['prefix' => '@admin@'], function () {
     Route::get('/api/deleteProject', 'ajaxController@deleteProject')->name('deleteProject');
     Route::get('/api/updateProject','ajaxController@updateProject')->name('updateProject');
 
+//    content
+
     Route::get('/projectContent/{id}', 'backendController@projectContent')->name('projectContent');
     Route::post('/projectContentTitle', 'backendController@projectContentTitle')->name('projectContentTitle');
     Route::post('/projectContent/content', 'backendController@myProjectContent')->name('myProjectContent');
+
+    Route::get('/myContent/{id}','backendController@myContent')->name('myContent');
+    Route::post('/myContent/{id}','backendController@myContentAction');
 
 //    update
     Route::post('/projectContentTitle/update', 'backendController@updateProjectContentTitle')->name('updateProjectContentTitle');
@@ -50,3 +58,7 @@ Route::group(['prefix' => '@admin@'], function () {
     Route::post('/previewPdf','pdfController@previewPdf')->name('previewPdf');
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

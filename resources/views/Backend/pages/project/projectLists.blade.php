@@ -2,7 +2,7 @@
 @section('heading')
     <div class="row">
         <div class="col-md-6">
-            Project Lists
+            All Project
         </div>
         <div class="col-md-6" style="text-align: right">
             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -55,15 +55,17 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Project Name</th>
+                        <th scope="col">Status</th>
                         <th style="text-align: center" colspan="2" scope="col">Manage</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($projectLists as $key=>$value)
+                    @forelse($projectLists as $key=>$value)
                         <tr>
                             <th scope="row">{{++$key}}</th>
                             <td class="myProjectName">{{$value->projectName}}</td>
                             <input type="hidden" value="{{$value->id}}">
+                            <td>{{$value->projectStatus}}</td>
                             <td style="text-align: center">
                                 <button type="button" class="btn btn-danger projectDelete"><i class="fas fa-trash-alt"></i>
                                 </button>
@@ -72,7 +74,11 @@
                             <a href="{{route('projectContent',$value->id)}}" class="btn btn-info"><i class="fa fa-level-down-alt"></i></a>
 
                         </tr>
-                    @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="4" style="text-align: center"><code>Create New Project</code></td>
+                        </tr>
+                    @endforelse
                     </tbody>
                 </table>
             </div>

@@ -16,8 +16,7 @@
 <body>
 
 @foreach($data as $value)
-
-    @if($value->getContent->myProjectContent)
+    @if($value->getContent)
         {{$value->contentTitle}}:
         <?php
         echo htmlspecialchars_decode($value->getContent->myProjectContent)
@@ -33,10 +32,12 @@ if ( isset($pdf) ) {
         if ($PAGE_COUNT > 1) {
             $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
             $size = 12;
-            $pageText =  $PAGE_NUM ;
+            $pageText =  $PAGE_NUM-1;
             $y = 800;
-            $x = 320;
+            $x = 300;
+            if($pageText!=0){
             $pdf->text($x, $y, $pageText, $font, $size);
+            }
         }
     ');
 }

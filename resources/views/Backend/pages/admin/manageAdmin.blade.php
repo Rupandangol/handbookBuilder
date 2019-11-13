@@ -28,7 +28,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($admin as $key=>$value)
+                    @forelse($admin as $key=>$value)
                         <tr>
                             <th scope="row">{{++$key}}</th>
                             <td>{{$value->username}}</td>
@@ -51,7 +51,11 @@
                                                               href="{{route('deleteAdmin',$value->id)}}"><i
                                             class="fa fa-trash"></i></a></td>
                         </tr>
-                    @endforeach
+                        @empty
+                        <tr>
+                            <td  style="text-align: center" colspan="5"><code>Create New Admin</code></td>
+                        </tr>
+                    @endforelse
                     </tbody>
                 </table>
             </div>

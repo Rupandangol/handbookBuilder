@@ -20,4 +20,13 @@ class ProjectContentTitle extends Model
             'id'
         );
     }
+
+    public function getProject()
+    {
+        return $this->hasOne(
+            'App\Model\Project',
+            'id',
+            'project_id'
+        );
+    }
 }

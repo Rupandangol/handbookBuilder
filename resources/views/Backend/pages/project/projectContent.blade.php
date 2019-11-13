@@ -118,7 +118,7 @@
                 <tr>
                     <th>#</th>
                     <th>Title</th>
-                    <th>action</th>
+                    <th>Content</th>
                     @if($projectTitle->editContentNo==='1')
                         <th style="text-align: center" class="order">Edit</th>
                     @else
@@ -130,7 +130,7 @@
                 <?php
                 $count = 0;
                 ?>
-                @foreach($contentTitle as $value)
+                @forelse($contentTitle as $value)
                     <tr>
                         <th>{{++$count}}</th>
                         <td>
@@ -179,60 +179,7 @@
                             {{--end of Update ContentTitle--}}
                         </td>
                         <td>
-                            {{--Content Textarea--}}
-
-                            <a href="#" class="btn btn-primary" data-toggle="modal"
-                               data-target="#exampleModal{{$count}}">
-                                Content
-                            </a>
-
-                            <div class="modal fade" id="exampleModal{{$count}}" tabindex="-1" role="dialog"
-                                 aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content" style="margin-left: -200px; width: 1000px;">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Content:</h5>
-                                            <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </a>
-                                        </div>
-                                        <form method="post" id="" action="{{route('myProjectContent')}}">
-                                            {{csrf_field()}}
-                                            <div class="modal-body">
-                                                <div style="text-align:left" class="form-group">
-                                                    <input type="hidden" name="title_id" value="{{$value->id}}">
-                                                    <input type="hidden" name="project_id"
-                                                           value="{{$projectTitle->id}}">
-                                                    @if($value->getContent)
-                                                        <textarea name="myProjectContent"
-                                                                  id="content-ckeditor{{$count}}" cols="30"
-                                                                  rows="10">{{$value->getContent->myProjectContent}}</textarea>
-                                                    @else
-                                                        <textarea name="myProjectContent"
-                                                                  id="content-ckeditor{{$count}}" cols="30"
-                                                                  rows="10"></textarea>
-
-                                                    @endif
-                                                    <script>
-                                                        CKEDITOR.replace('content-ckeditor{{$count}}', {
-                                                            filebrowserUploadUrl: '',
-                                                            filebrowserUploadMethod: 'form',
-                                                            height: 500
-                                                        });
-                                                    </script>
-                                                </div>
-                                                <p><code id="msgHere"></code></p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <a href="#" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                                                <button id="" type="submit" class="btn btn-primary">Save</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{--end of content Textarea--}}
+                            <a href="{{route('myContent',$value->id)}}" class="btn btn-default"><i class="fa fa-file-alt fa-2x"></i></a>
                         </td>
                         @if($projectTitle->editContentNo==='1')
                             <td style="text-align: center" class="order">
@@ -248,7 +195,13 @@
                                 {{--<button class="up">{{$value->order_by}}</button>--}}
                             </td>
                     </tr>
-                @endforeach
+                    @empty
+                    <tr>
+                        <td colspan="4" style="text-align: center">
+                            <code>Create New Content</code>
+                        </td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>
@@ -256,63 +209,11 @@
 @endsection
 
 @section('my-footer')
-    <script>
-        $(function () {
-            $('#editUpDown').on('click', function () {
-                var project_id = $(this).parent().parent().find('input').val();
-                var base_url = window.location.origin;
-                $.ajax({
-                    url: base_url + "/@admin@/api/editContentNo",
-                    data: {'project_id': project_id},
-                    cache: false,
-                    success: function (data) {
-                        // console.log(data);
-                        $('.order').toggleClass('hidden');
-                    }
-                });
-            });
-            $('#updateProject').on('click', function () {
-                updateProject();
-            });
-
-            function updateProject() {
-
-                var project_id = $('#myProject_id').val();
-                var project_name = $('#myContentTitleUpdate').val();
-                if (project_name) {
-                    var base_url = window.location.origin;
-                    $.ajax({
-                        url: base_url + "/@admin@/api/updateProject",
-                        data: {'project_id': project_id, 'project_name': project_name},
-                        cache: false,
-                        success: function (data) {
-                            $('#myProjectTitle').text(data);
-                            $('.updatedSuccessfully').slideDown(function () {
-                                setTimeout(function () {
-                                    $('.updatedSuccessfully').slideUp();
-                                }, 1000);
-                            });
-
-                        }
-                    });
-                }
-
-            }
-
-            $('#myContentTitleUpdate').on('keyup', function (e) {
-                if (e.keyCode === 13) {
-                    $('#updateProject').click();
-                }
-            })
-        })
-    </script>
-@endsection
-@section('my-header')
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-
+    <script src="{{URL::to('js/projectContent.js')}}"></script>
     <style>
         .hidden {
             display: none;
         }
+
     </style>
 @endsection

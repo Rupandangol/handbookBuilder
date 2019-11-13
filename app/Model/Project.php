@@ -10,6 +10,7 @@ class Project extends Model
     protected $fillable = [
         'projectName',
         'editContentNo',
+        'projectStatus',
         'project_created_by'
     ];
 }

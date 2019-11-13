@@ -12,8 +12,10 @@ class backendController extends Controller
 {
     public function dashboard()
     {
-        $data['project']=Project::all();
-        return view('Backend.pages.dashboard',$data);
+        $data['project'] = Project::all();
+        $data['admin'] = Admin::all();
+        $data['dashboard_active']='active';
+        return view('Backend.pages.dashboard', $data);
 
     }
 
@@ -94,7 +96,8 @@ class backendController extends Controller
         ]);
         $data['projectName'] = $request->projectName;
         $data['editContentNo'] = 1;
-        $data['project_created_by']='asdf';
+        $data['project_created_by'] = 'asdf';
+        $data['projectStatus']=1;
         if ($newProject = Project::create($data)) {
             $id = $newProject->id;
             return redirect(route('projectContent', $id));
@@ -120,6 +123,7 @@ class backendController extends Controller
         $data['order_by'] = ProjectContentTitle::where(['project_id' => $data['project_id']])->get()->count() + 1;
 
         if (ProjectContentTitle::create($data)) {
+
             return redirect()->back()->with('success', 'Title Added');
         }
         return redirect()->back()->with('fail', 'failed');
@@ -138,20 +142,30 @@ class backendController extends Controller
         return redirect()->back()->with('success', 'Updated');
     }
 
+    public function myContent($id)
+    {
+        $data['title'] = ProjectContentTitle::find($id);
+        $data['myContent']=ProjectContent::where(['title_id'=>$id])->first();
+        return view('Backend.pages.project.projectContent.myContent', $data);
+    }
 
-    public function myProjectContent(Request $request)
+    public function myContentAction(Request $request)
     {
         $request->validate([
             'myProjectContent' => 'required'
         ]);
+        $project_id = ProjectContentTitle::find($request->title_id)->getProject->id;
+
         $data['title_id'] = $request->title_id;
         $data['myProjectContent'] = $request->myProjectContent;
+
+
         if (ProjectContent::where(['title_id' => $data['title_id']])->first()) {
             ProjectContent::where(['title_id' => $data['title_id']])->first()->update($data);
-            return redirect(route('projectContent', $request->project_id));
+            return redirect(route('projectContent', $project_id))->with('success','Content Updated');
         } else {
             if (ProjectContent::create($data)) {
-                return redirect(route('projectContent', $request->project_id));
+                return redirect(route('projectContent', $project_id))->with('success','Content Added');
             }
         }
     }

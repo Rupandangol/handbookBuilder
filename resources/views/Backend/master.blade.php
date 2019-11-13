@@ -1,5 +1,4 @@
 @include('Backend.layouts.header')
-
 <body>
 <!-- ============================================================== -->
 <!-- main wrapper -->
@@ -18,9 +17,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto navbar-right-top">
                     {{--<li class="nav-item">--}}
-                        {{--<div id="custom-search" class="top-search-bar">--}}
-                            {{--<input class="form-control" type="text" placeholder="Search..">--}}
-                        {{--</div>--}}
+                    {{--<div id="custom-search" class="top-search-bar">--}}
+                    {{--<input class="form-control" type="text" placeholder="Search..">--}}
+                    {{--</div>--}}
                     {{--</li>--}}
 
                     <li class="nav-item dropdown notification">
@@ -165,13 +164,15 @@
                         </li>
                         <li class="nav-item ">
 
-                                        <a class="nav-link" href="{{route('dashboard')}}"><i class="fa fa-tachometer-alt"></i>Dashboard</a>
+                            <a class="nav-link active" href="{{route('dashboard')}}"><i
+                                        class="fa fa-tachometer-alt"></i>Dashboard</a>
 
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false"
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                                data-target="#submenu-1" aria-controls="submenu-1"><i
-                                        class="fa fa-fw fa-user-circle"></i>Admin<span class="badge badge-success">6</span></a>
+                                        class="fa fa-fw fa-user-circle"></i>Admin<span
+                                        class="badge badge-success">6</span></a>
                             <div id="submenu-1" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
@@ -183,16 +184,22 @@
                                 </ul>
                             </div>
                         </li>
+
+                        <li class="nav-item ">
+
+                            <a class="nav-link" href="#"><i class="fa fa-users"></i>Users</a>
+
+                        </li>
                         <li class="nav-divider">
                             Features
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                               data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-file"></i>Pages</a>
+                               data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-file"></i>Project</a>
                             <div id="submenu-6" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('projectLists')}}">Project Lists</a>
+                                        <a class="nav-link" href="{{route('projectLists')}}">All Project</a>
                                     </li>
                                 </ul>
                             </div>
@@ -210,8 +217,8 @@
     <!-- ============================================================== -->
     <div class="dashboard-wrapper">
         <div class="container-fluid dashboard-content">
-            @yield('fullPage')
-            <!-- ============================================================== -->
+        @yield('fullPage')
+        <!-- ============================================================== -->
             <!-- pageheader -->
             <!-- ============================================================== -->
             <div class="row">
@@ -233,23 +240,23 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        {{--<div class="footer">--}}
-            {{--<div class="container-fluid">--}}
-                {{--<div class="row">--}}
-                    {{--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">--}}
-                        {{--Copyright © 2019 TalentConnects. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">TalentConnects</a>.--}}
-                    {{--</div>--}}
-                    {{--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">--}}
-                        {{--<div class="text-md-right footer-links d-none d-sm-block">--}}
-                            {{--<a href="javascript: void(0);">About</a>--}}
-                            {{--<a href="javascript: void(0);">Support</a>--}}
-                            {{--<a href="javascript: void(0);">Contact Us</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        <!-- ============================================================== -->
+    {{--<div class="footer">--}}
+    {{--<div class="container-fluid">--}}
+    {{--<div class="row">--}}
+    {{--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">--}}
+    {{--Copyright © 2019 TalentConnects. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">TalentConnects</a>.--}}
+    {{--</div>--}}
+    {{--<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">--}}
+    {{--<div class="text-md-right footer-links d-none d-sm-block">--}}
+    {{--<a href="javascript: void(0);">About</a>--}}
+    {{--<a href="javascript: void(0);">Support</a>--}}
+    {{--<a href="javascript: void(0);">Contact Us</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    <!-- ============================================================== -->
         <!-- end footer -->
         <!-- ============================================================== -->
     </div>
