@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>HandbookBuilder</title>
+    <title>Handbook Builder</title>
 
     <link rel="stylesheet" href="{{URL::to('lib/bootstrap/css/bootstrap.min.css')}}">
     <link href="{{URL::to('lib/fonts/circular-std/style.css" rel="stylesheet')}}">
@@ -13,7 +13,8 @@
     <style>
         html,
         body {
-            background-image: url('uploads/backgroundImage/building.jpg');
+            background-image: url("uploads/backgroundImage/sky.jpg");
+            background-repeat: no-repeat;background-size: cover;
             height: 100%;
         }
 
@@ -35,7 +36,9 @@
         <div class="card-header text-center"><a href="#"><img style="width: 150px;height: 100px" class="logo-img"
                                                               src="{{URL::to('uploads/logo/logo-02.png')}}"
                                                               alt="logo"></a><span
-                    class="splash-description">Handbook Builder</span>
+                    class="splash-description">Handbook Builder <br>
+                UserLogin
+            </span>
             @if($errors->all())
                 <code class="logout-msg">Invalid Credentials</code>
             @endif
@@ -50,31 +53,27 @@
                 </code>
             @endif
         </div>
-
         <div class="card-body">
-            <form method="post" action="{{route('loginPage')}}">
+            <form method="post" action="{{route('loginUser')}}">
                 {{csrf_field()}}
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="username" name="username" type="text"
-                           placeholder="Username"
+                    <input class="form-control form-control-lg" name="username" id="username" type="text" placeholder="Username"
                            autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="password" name="password" type="password"
-                           placeholder="Password">
+                    <input class="form-control form-control-lg" id="password" name="password" type="password" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <label class="custom-control custom-checkbox">
-                        <input class="custom-control-input" name="remember_me" type="checkbox"><span
-                                class="custom-control-label">Remember Me</span>
+                        <input class="custom-control-input" name="remember_me" type="checkbox"><span class="custom-control-label">Remember Me</span>
                     </label>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
             </form>
         </div>
         <div class="card-footer bg-white p-0  ">
-            {{--<div class="card-footer-item card-footer-item-bordered">--}}
-            {{--<a href="#" class="footer-link">Create An Account</a></div>--}}
+            <div class="card-footer-item card-footer-item-bordered">
+                <a href="{{route('registerUser')}}" class="footer-link">Create An Account</a></div>
             <div class="card-footer-item card-footer-item-bordered">
                 <a href="#" class="footer-link">Forgot Password</a>
             </div>
@@ -85,13 +84,5 @@
 
 <script src="{{URL::to('lib/jquery/jquery-3.3.1.min.js')}}"></script>
 <script src="{{URL::to('lib/bootstrap/js/bootstrap.bundle.js')}}"></script>
-<script>
-    $(function () {
-        setTimeout(function () {
-            $('.logout-msg').slideUp('fast');
-        },1000);
-    })
-</script>
-
 </body>
 </html>

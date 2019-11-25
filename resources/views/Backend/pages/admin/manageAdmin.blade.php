@@ -6,13 +6,16 @@
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <h5 class="card-header">Striped Table</h5>
+            <div id="statusMsg" class="alert alert-success hidden">
+                Status Updated
+            </div>
             @if(session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success msgHide">
                     {{session('success')}}
                 </div>
             @endif
             @if(session('fail'))
-                <div class="alert alert-danger">
+                <div class="alert alert-danger msgHide">
                     {{session('fail')}}
                 </div>
             @endif
@@ -35,10 +38,12 @@
                             <td>{{$value->email}}</td>
                             <td>
                                 @if($value->status==='0')
-                                    <button class="btn btn-default"><i class="fa fa-toggle-off"></i></button>
+                                    <button value="{{$value->id}}" class="btn btn-default adminStatus"><i
+                                                class="fa fa-toggle-off"></i></button>
 
                                 @else
-                                    <button class="btn btn-success"><i class="fa fa-toggle-off"></i></button>
+                                    <button value="{{$value->id}}" class="btn btn-success adminStatus"><i
+                                                class="fa fa-toggle-on"></i></button>
 
                                 @endif
 
@@ -51,9 +56,9 @@
                                                               href="{{route('deleteAdmin',$value->id)}}"><i
                                             class="fa fa-trash"></i></a></td>
                         </tr>
-                        @empty
+                    @empty
                         <tr>
-                            <td  style="text-align: center" colspan="5"><code>Create New Admin</code></td>
+                            <td style="text-align: center" colspan="5"><code>Create New Admin</code></td>
                         </tr>
                     @endforelse
                     </tbody>
@@ -61,4 +66,47 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('my-header')
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+@endsection
+@section('my-footer')
+    <script>
+        $(function () {
+            $('.adminStatus').on('click', function () {
+                var btn = $(this);
+                var admin_id = $(this).val();
+                var base_url = window.location.origin;
+                $.ajax({
+                    url: base_url + '/@admin@/api/adminStatus',
+                    data: {'admin_id': admin_id},
+                    cache: false,
+                    success: function (data) {
+                        if (data === '1') {
+                            btn.prop('class', 'btn btn-success adminStatus');
+                            btn.find('i').prop('class', 'fa fa-toggle-on')
+                        } else {
+                            btn.prop('class', 'btn btn-default adminStatus');
+                            btn.find('i').prop('class', 'fa fa-toggle-off')
+
+                        }
+                    }
+                });
+                $('#statusMsg').slideDown(function () {
+                    setTimeout(function () {
+                        $('#statusMsg').slideUp('fast');
+                    }, 1000);
+                });
+
+            });
+            setTimeout(function () {
+                $('.msgHide').fadeOut('fast');
+            }, 1000);
+        });
+    </script>
 @endsection

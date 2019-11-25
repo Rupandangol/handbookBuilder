@@ -17,9 +17,8 @@
 
 @foreach($data as $value)
     @if($value->getContent)
-        {{$value->contentTitle}}:
         <?php
-        echo htmlspecialchars_decode($value->getContent->myProjectContent)
+        echo htmlspecialchars_decode(str_replace('src="/kcfinder/upload','src="'.url('kcfinder/upload'),$value->getContent->myProjectContent))
         ?>
         <div class="page_break"></div>
     @endif

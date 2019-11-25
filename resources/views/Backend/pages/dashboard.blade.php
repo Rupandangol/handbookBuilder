@@ -3,91 +3,81 @@
     Dashboard
 @endsection
 @section('content')
-{{--dashWidget--}}
+    {{--dashWidget--}}
 
-<div class="row">
-
-
+    <div class="row">
 
 
-
-
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-inline-block">
-                    <h5 class="text-muted">Projects</h5>
-                    <h2 class="mb-0"> {{count($project)}}</h2>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <a href="{{route('projectLists')}}">
+                <div class="card-body">
+                    <div class="d-inline-block">
+                        <h5 class="text-muted">Projects</h5>
+                        <h2 class="mb-0"> {{count($project)}}</h2>
+                    </div>
+                    <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+                        <i class="fa fa-folder-open fa-fw fa-sm text-info"></i>
+                    </div>
                 </div>
-                <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
-                    <i class="fa fa-folder-open fa-fw fa-sm text-info"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <a href="{{route('myUserList')}}">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Total Users</h5>
+                            <h2 class="mb-0">{{count($user_list)}}</h2>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
+                            <i class="fa fa-user fa-fw fa-sm text-primary"></i>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <a href="{{route('manageAdmin')}}">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Total Admins</h5>
+                            <h2 class="mb-0">{{count($admin)}}</h2>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
+                            <i class="fa fa-user-secret fa-fw fa-sm text-secondary"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-inline-block">
+                        <h5 class="text-muted">Total Earned</h5>
+                        <h2 class="mb-0"> $149.00</h2>
+                    </div>
+                    <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
+                        <i class="fa fa-money-bill-alt fa-fw fa-sm text-brand"></i>
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 
-
-
-
-
-
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-inline-block">
-                    <h5 class="text-muted">Total Users</h5>
-                    <h2 class="mb-0"> 100</h2>
-                </div>
-                <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
-                    <i class="fa fa-user fa-fw fa-sm text-primary"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-inline-block">
-                    <h5 class="text-muted">Total Admins</h5>
-                    <h2 class="mb-0">{{count($admin)}}</h2>
-                </div>
-                <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
-                    <i class="fa fa-user-secret fa-fw fa-sm text-secondary"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-inline-block">
-                    <h5 class="text-muted">Total Earned</h5>
-                    <h2 class="mb-0"> $149.00</h2>
-                </div>
-                <div class="float-right icon-circle-medium  icon-box-lg  bg-brand-light mt-1">
-                    <i class="fa fa-money-bill-alt fa-fw fa-sm text-brand"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-</div>
-
-{{--end of dashwidget--}}
+    {{--end of dashwidget--}}
 
 
 

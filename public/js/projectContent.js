@@ -45,5 +45,8 @@ $(function () {
         if (e.keyCode === 13) {
             $('#updateProject').click();
         }
-    })
+    });
+    setTimeout(function () {
+        $('.sessionValue').fadeOut('fast');
+    },1000);
 });

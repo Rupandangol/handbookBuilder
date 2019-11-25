@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Frontend;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Authenticatable
+class UserList extends Authenticatable
 {
-    protected $table = 'admins';
+    protected $table = 'user_lists';
     protected $fillable = [
         'username',
         'email',
-        'privileges',
         'password',
         'status'
     ];

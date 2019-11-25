@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Model\Admin;
+use App\Model\Frontend\UserList;
+use App\Model\Log;
 use App\Model\Project;
 use App\Model\ProjectContent;
 use App\Model\ProjectContentTitle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class backendController extends Controller
 {
@@ -14,14 +17,17 @@ class backendController extends Controller
     {
         $data['project'] = Project::all();
         $data['admin'] = Admin::all();
-        $data['dashboard_active']='active';
+        $data['user_list'] = UserList::all();
+        $data['dashboard_active'] = 'active';
         return view('Backend.pages.dashboard', $data);
 
     }
 
     public function addAdmin()
     {
-        return view('Backend.pages.admin.addAdmin');
+        $addAdmin_active = 'active';
+        $admin_active = 'active';
+        return view('Backend.pages.admin.addAdmin', compact('addAdmin_active', 'admin_active'));
     }
 
     public function addAdminAction(Request $request)
@@ -46,7 +52,10 @@ class backendController extends Controller
     public function manageAdmin()
     {
         $admin = Admin::all();
-        return view('Backend.pages.admin.manageAdmin', compact('admin'));
+        $manageAdmin_active = 'active';
+        $admin_active = 'active';
+
+        return view('Backend.pages.admin.manageAdmin', compact('admin', 'manageAdmin_active', 'admin_active'));
     }
 
     public function deleteAdmin($id)
@@ -96,11 +105,16 @@ class backendController extends Controller
         ]);
         $data['projectName'] = $request->projectName;
         $data['editContentNo'] = 1;
-        $data['project_created_by'] = 'asdf';
-        $data['projectStatus']=1;
+        $data['project_created_by'] = Auth::guard('admin')->user()->username;
+        $data['projectStatus'] = 0;
         if ($newProject = Project::create($data)) {
             $id = $newProject->id;
-            return redirect(route('projectContent', $id));
+            $item['admin_name']=$data['project_created_by'];
+            $item['activity']='Created';
+            $item['project_name']=$data['projectName'];
+            Log::create($item);
+//            return redirect(route('projectContent', $id));
+            return redirect()->back()->with('success', 'Created');
         }
         return redirect()->back()->with('fail', 'Failed');
     }
@@ -145,7 +159,7 @@ class backendController extends Controller
     public function myContent($id)
     {
         $data['title'] = ProjectContentTitle::find($id);
-        $data['myContent']=ProjectContent::where(['title_id'=>$id])->first();
+        $data['myContent'] = ProjectContent::where(['title_id' => $id])->first();
         return view('Backend.pages.project.projectContent.myContent', $data);
     }
 
@@ -162,10 +176,10 @@ class backendController extends Controller
 
         if (ProjectContent::where(['title_id' => $data['title_id']])->first()) {
             ProjectContent::where(['title_id' => $data['title_id']])->first()->update($data);
-            return redirect(route('projectContent', $project_id))->with('success','Content Updated');
+            return redirect(route('projectContent', $project_id))->with('success', 'Content Updated');
         } else {
             if (ProjectContent::create($data)) {
-                return redirect(route('projectContent', $project_id))->with('success','Content Added');
+                return redirect(route('projectContent', $project_id))->with('success', 'Content Added');
             }
         }
     }
@@ -215,4 +229,26 @@ class backendController extends Controller
         ProjectContentTitle::find($id)->delete();
         return redirect()->back();
     }
+
+
+    public function userList()
+    {
+        $data['userList'] = UserList::all();
+        return view('Backend.pages.user.userList', $data);
+    }
+
+
+    public function deleteProject(Request $request)
+    {
+        $data = Project::find($request->project_id);
+        $projectName = $data->projectName;
+        $data->delete();
+        $item['admin_name']=Auth::guard('admin')->user()->username;
+        $item['activity']='Deleted';
+        $item['project_name']=$projectName;
+        Log::create($item);
+        return redirect(route('projectLists'))->with('fail', 'Project "' . $projectName . '" is Deleted');
+    }
+
+
 }

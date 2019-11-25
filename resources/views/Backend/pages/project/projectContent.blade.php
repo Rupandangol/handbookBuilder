@@ -45,13 +45,39 @@
         <div class="col-md-6" style="text-align: right">
             <div class="row">
                 <div class="col-md-9">
-                    <form method="post" action="{{route('previewPdf')}}">
-                        {{csrf_field()}}
-                        <input type="hidden" name="project_id" value="{{$projectTitle->id}}">
-                        <button class="btn btn-default"><i class="fa fa-eye"></i></button>
-                    </form>
+                    <div class="row">
+                        <div class="col-md-9">
+                            @if(Auth::guard('admin')->user()->privileges==='Super Admin')
+                                <form method="post" action="{{route('deleteProject')}}">
+                                    {{csrf_field()}}
+                                    <button class="btn btn-danger" name="project_id" value="{{$projectTitle->id}}" type="submit"><i
+                                                class="fa fa-trash-alt"></i></button>
+                                </form>
+                            @endif
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <form method="post" action="{{route('previewPdf')}}">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="project_id" value="{{$projectTitle->id}}">
+                                        <button class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                                    </form>
+                                </div>
+                                <div class="col-md-7">
+
+                                    <a class="word-export btn btn-primary"
+                                       href="{{route('downloadWord',$projectTitle->id)}}"><i
+                                                class="fa fa-home"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-3">
                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         <i class="fas fa-plus-square"></i> New Content
                     </a>
@@ -96,7 +122,7 @@
 
     <div class="card">
         @if(session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success sessionValue">
                 {{session('success')}}
             </div>
         @endif
@@ -104,7 +130,7 @@
         <h5 class="card-header">
             <div class="row">
                 <div class="col-md-6">
-                    Hoverable Table
+                    CONTENTS
                 </div>
                 <input type="hidden" value="{{$projectTitle->id}}">
                 <div style="text-align: right" class="col-md-6">
@@ -179,7 +205,8 @@
                             {{--end of Update ContentTitle--}}
                         </td>
                         <td>
-                            <a href="{{route('myContent',$value->id)}}" class="btn btn-default"><i class="fa fa-file-alt fa-2x"></i></a>
+                            <a href="{{route('myContent',$value->id)}}" class="btn btn-default"><i
+                                        class="fa fa-file-alt fa-2x"></i></a>
                         </td>
                         @if($projectTitle->editContentNo==='1')
                             <td style="text-align: center" class="order">
@@ -195,7 +222,7 @@
                                 {{--<button class="up">{{$value->order_by}}</button>--}}
                             </td>
                     </tr>
-                    @empty
+                @empty
                     <tr>
                         <td colspan="4" style="text-align: center">
                             <code>Create New Content</code>

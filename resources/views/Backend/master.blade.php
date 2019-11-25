@@ -125,18 +125,19 @@
                     </li>
                     <li class="nav-item dropdown nav-user">
                         <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false"><img src="" alt=""
-                                                                           class="user-avatar-md rounded-circle"></a>
+                           aria-haspopup="true"
+                           aria-expanded="false">{{ucfirst(Auth::guard('admin')->user()->username)}}</a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
                              aria-labelledby="navbarDropdownMenuLink2">
                             <div class="nav-user-info">
                                 <h5 class="mb-0 text-white nav-user-name">
-                                    John Abraham</h5>
+                                    {{ucfirst(Auth::guard('admin')->user()->username)}}</h5>
                                 <span class="status"></span><span class="ml-2">Available</span>
                             </div>
                             <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                             <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                            <a class="dropdown-item" href="{{route('admin-logout')}}"><i
+                                        class="fas fa-power-off mr-2"></i>Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -149,7 +150,7 @@
     <!-- ============================================================== -->
     <!-- left sidebar -->
     <!-- ============================================================== -->
-    <div class="nav-left-sidebar sidebar-dark">
+    <div class="nav-left-sidebar" style="background-image: url('/uploads/backgroundImage/building.jpg');color: white;">
         <div class="menu-list">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -164,30 +165,32 @@
                         </li>
                         <li class="nav-item ">
 
-                            <a class="nav-link active" href="{{route('dashboard')}}"><i
+                            <a class="nav-link {{$dashboard_active ?? ''}}" href="{{route('dashboard')}}"><i
                                         class="fa fa-tachometer-alt"></i>Dashboard</a>
 
                         </li>
+                        @if(Auth::guard('admin')->user()->privileges==='Super Admin')
+                            <li class="nav-item ">
+                                <a class="nav-link {{$admin_active??''}}" href="#" data-toggle="collapse"
+                                   aria-expanded="false"
+                                   data-target="#submenu-1" aria-controls="submenu-1"><i
+                                            class="fa fa-fw fa-user-circle"></i>Admin</a>
+                                <div id="submenu-1" class="collapse submenu" style="background-color: white">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item {{$addAdmin_active??''}}">
+                                            <a class="nav-link " href="{{route('addAdmin')}}">Add
+                                                Admin</a>
+                                        </li>
+                                        <li class="nav-item {{$manageAdmin_active??''}}">
+                                            <a class="nav-link" href="{{route('manageAdmin')}}">Manage Admin</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        @endif
                         <li class="nav-item ">
-                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
-                               data-target="#submenu-1" aria-controls="submenu-1"><i
-                                        class="fa fa-fw fa-user-circle"></i>Admin<span
-                                        class="badge badge-success">6</span></a>
-                            <div id="submenu-1" class="collapse submenu" style="">
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{route('addAdmin')}}">Add Admin</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{route('manageAdmin')}}">Manage Admin</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
 
-                        <li class="nav-item ">
-
-                            <a class="nav-link" href="#"><i class="fa fa-users"></i>Users</a>
+                            <a class="nav-link" href="{{route('myUserList')}}"><i class="fa fa-users"></i>Users</a>
 
                         </li>
                         <li class="nav-divider">
@@ -196,7 +199,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                                data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-file"></i>Project</a>
-                            <div id="submenu-6" class="collapse submenu" style="">
+                            <div id="submenu-6" class="collapse submenu" style="background-color: white">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('projectLists')}}">All Project</a>
@@ -204,6 +207,14 @@
                                 </ul>
                             </div>
                         </li>
+
+
+                        <li class="nav-item ">
+
+                            <a class="nav-link" href="{{route('viewLog')}}"><i class="fa fa-history"></i>Log</a>
+
+                        </li>
+
                     </ul>
                 </div>
             </nav>
