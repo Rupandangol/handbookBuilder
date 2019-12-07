@@ -57,13 +57,15 @@ class Handler extends ExceptionHandler
             case 'admin':
                 $loginUser = 'loginPage';
                 break;
-//            case 'userList':
-//
+
+            case 'userList':
+                $loginUser = 'loginUser';
+                break;
+
             default:
-            $loginUser = 'userList';
-            break;
-//                $login = 'login';
-//                break;
+                $loginUser = 'userList';
+                break;
+
         }
         return redirect()->guest(route($loginUser));
     }

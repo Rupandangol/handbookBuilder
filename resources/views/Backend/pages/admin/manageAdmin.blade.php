@@ -33,7 +33,7 @@
                     <tbody>
                     @forelse($admin as $key=>$value)
                         <tr>
-                            <th scope="row">{{++$key}}</th>
+                            <td scope="row">{{++$key}}</td>
                             <td>{{$value->username}}</td>
                             <td>{{$value->email}}</td>
                             <td>
@@ -73,6 +73,7 @@
         .hidden {
             display: none;
         }
+
     </style>
 @endsection
 @section('my-footer')

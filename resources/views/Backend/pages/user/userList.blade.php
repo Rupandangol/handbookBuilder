@@ -15,6 +15,11 @@
     <div id="userStatusMsg" class="alert alert-success hidden">
         <p>Status Changed</p>
     </div>
+    @if(session('fail'))
+        <div class="alert alert-danger">
+            {{session('fail')}}
+        </div>
+    @endif
     {{--end of msg--}}
 
     <div class="card">
@@ -27,6 +32,7 @@
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>
                     <th scope="col">Status</th>
+                    <th>About</th>
                     <th>Signed Up</th>
                 </tr>
                 </thead>
@@ -47,6 +53,8 @@
 
 
                         </td>
+                        <td><a class="btn btn-default" href="{{route('userInfo-backend',$value->id)}}"><i
+                                        class="far fa-id-card fa-2x"></i></a></td>
                         <td>{{\Carbon\Carbon::parse($value->created_at)->diffForHumans()}}</td>
                     </tr>
                 @empty

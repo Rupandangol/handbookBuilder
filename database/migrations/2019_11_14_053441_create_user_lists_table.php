@@ -14,7 +14,7 @@ class CreateUserListsTable extends Migration
     public function up()
     {
         Schema::create('user_lists', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('username');
             $table->string('email');
             $table->string('password');

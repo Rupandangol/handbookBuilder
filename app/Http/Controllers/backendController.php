@@ -101,19 +101,21 @@ class backendController extends Controller
     public function newProject(Request $request)
     {
         $request->validate([
-            'projectName' => 'required|unique:projects,projectName'
+            'category'=>'required',
+            'language'=>'required',
+            'price'=>'required',
         ]);
-        $data['projectName'] = $request->projectName;
         $data['editContentNo'] = 1;
         $data['project_created_by'] = Auth::guard('admin')->user()->username;
         $data['projectStatus'] = 0;
+        $data['category']=$request->category;
+        $data['language']=$request->language;
+        $data['price']=$request->price;
         if ($newProject = Project::create($data)) {
-            $id = $newProject->id;
             $item['admin_name']=$data['project_created_by'];
             $item['activity']='Created';
-            $item['project_name']=$data['projectName'];
+            $item['category_name']=$data['category'];
             Log::create($item);
-//            return redirect(route('projectContent', $id));
             return redirect()->back()->with('success', 'Created');
         }
         return redirect()->back()->with('fail', 'Failed');
@@ -231,23 +233,16 @@ class backendController extends Controller
     }
 
 
-    public function userList()
-    {
-        $data['userList'] = UserList::all();
-        return view('Backend.pages.user.userList', $data);
-    }
-
-
     public function deleteProject(Request $request)
     {
         $data = Project::find($request->project_id);
-        $projectName = $data->projectName;
+        $categoryName = $data->category;
         $data->delete();
         $item['admin_name']=Auth::guard('admin')->user()->username;
         $item['activity']='Deleted';
-        $item['project_name']=$projectName;
+        $item['category_name']=$categoryName;
         Log::create($item);
-        return redirect(route('projectLists'))->with('fail', 'Project "' . $projectName . '" is Deleted');
+        return redirect(route('projectLists'))->with('fail', 'Project "' . $categoryName . '" is Deleted');
     }
 
 

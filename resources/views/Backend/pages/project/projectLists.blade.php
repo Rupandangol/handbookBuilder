@@ -2,7 +2,7 @@
 @section('heading')
     <div class="row">
         <div class="col-md-6">
-            All Project
+            Employee Handbook
         </div>
         <div class="col-md-6" style="text-align: right">
             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -14,7 +14,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Project Title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Employee Handbook</h5>
                             <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </a>
@@ -24,8 +24,21 @@
                             <div class="modal-body">
 
                                 <div style="text-align:left" class="form-group">
-                                    <label for="recipient-name" class="col-form-label">Project Name:</label>
-                                    <input type="text" id="projectName" class="form-control" name="projectName">
+
+                                    <label for="category" class="col-form-label">Category:</label>
+                                    <input type="text" id="category" class="form-control" name="category">
+
+                                    <label for="language" class="col-form-label">Language:</label>
+                                    <select name="language" class="form-control" id="input-select">
+                                        <option>Nepali</option>
+                                        <option>English</option>
+                                    </select>
+
+                                    <label for="price" class="col-form-label">Price:</label>
+                                    <select name="price" class="form-control" id="input-select">
+                                        <option>Free</option>
+                                        <option>Paid</option>
+                                    </select>
                                 </div>
                                 <p><code id="msgHere"></code></p>
 
@@ -64,13 +77,21 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">{{ucfirst($value->projectName)}}</h3>
+                        <h3 class="card-title">Category: {{ucfirst($value->category)}}</h3>
                         <p class="card-text" style="height: 100px;overflow: hidden;">Lorem ipsum dolor sit amet,
                             consectetur adipisicing elit. A aliquam amet
                             animi asperiores deleniti dolores eaque earum facilis fuga harum incidunt, ipsa ipsum magnam
                             minus nulla velit veniam voluptates. Illum.</p>
                         <div>
-                            <p style="float: left">-{{$value->project_created_by}}</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    - {{$value->language}}
+                                </div>
+                                <div style="text-align: right" class="col-md-6">
+                                    - {{$value->price}}
+                                </div>
+                            </div>
+                            <p style="float: left">- {{ucfirst($value->project_created_by)}}</p>
                             <a style="float: right;margin-left: 3px" href="{{route('projectContent',$value->id)}}"
                                class="btn btn-primary"><i
                                         class="fa fa-level-down-alt"></i></a>
@@ -85,15 +106,11 @@
                             @else
                                 <button style="float: right" value="{{$value->id}}"
                                         class="btn btn-default projectStatus">
-
-
                                     <i class="fa fa-toggle-off"></i>
                                 </button>
 
                             @endif
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -111,29 +128,10 @@
 @section('my-footer')
     <script>
         $(function () {
-            // $('.projectDelete').on('click', function () {
-            //     var row = $(this).parent().parent();
-            //     var project_id = row.find('input').val();
-            //     var base_url = window.location.origin;
-            //     $.ajax({
-            //         url: base_url + "/@admin@/api/deleteProject",
-            //         data: {'project_id': project_id},
-            //         cache: false,
-            //         success: function (data) {
-            //             row.remove();
-            //         }
-            //     });
-            //     $('#deleteMsg').removeAttr('hidden');
-            //     $('#deleteMsg').slideDown(function () {
-            //         setTimeout(function () {
-            //             $('#deleteMsg').slideUp();
-            //         }, 1000);
-            //     });
-            // });
             $('#projectSubmit').on('click', function (e) {
-                var value = $('#projectName').val();
+                var value = $('#category').val();
                 if (!value) {
-                    $('#msgHere').text('Enter Project Name');
+                    $('#msgHere').text('Enter Category');
                     e.preventDefault();
                 }
             });
@@ -172,6 +170,7 @@
                     $('#sessionFailMsg').fadeOut('fast');
                 }, 1000);
             }
+
             sessionFailMsg();
         })
     </script>

@@ -1,8 +1,21 @@
 @extends('Backend.master')
 
 @section('heading')
-    <div style="text-align: center">
-        Title: {{ucfirst($title->contentTitle)}}
+    <div class="row" style="text-align: right">
+        <div class="col-md-6 col-xs-3">
+
+            Title: {{ucfirst($title->contentTitle)}}
+
+        </div>
+        <div class="col-md-6 col-xs-9">
+            <span data-toggle="tooltip" data-placement="bottom" title="Company Name=|%companyName%| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            no of employee=|%no_of_employee%| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            work Shift=|%work_shift%| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            no of Sick Leave=|%no_of_sick_leave%| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            holiday=|%paid_holiday%|">Keys
+            </span>
+        </div>
+
     </div>
 @endsection
 
@@ -30,6 +43,16 @@
     </div>
 @endsection
 
+@section('my-header')
+    <style>
+        .tooltip-inner {
+            max-width: 300px;
+            /* If max-width does not work, try using width instead */
+            width: 300px;
+        }
+    </style>
+@endsection
+
 @section('my-footer')
     <script src="/vendor/unisharp/ckeditor/ckeditor.js"></script>
     <script>
@@ -40,4 +63,5 @@
             width: 1350
         });
     </script>
+
 @endsection

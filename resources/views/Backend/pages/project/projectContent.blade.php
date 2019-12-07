@@ -1,4 +1,15 @@
 @extends('Backend.master')
+@section('my-header')
+    <style>
+        .hidden {
+            display: none;
+        }
+        #myPrice_Language{
+            font-size: 15px;
+        }
+
+    </style>
+@endsection
 @section('heading')
     <div class="alert alert-success updatedSuccessfully hidden">
         <p>Updated Successfully</p>
@@ -7,7 +18,7 @@
         <div class="col-md-6">
 
             <a href="#" class="" id="myProjectTitle" data-toggle="modal" data-target="#exampleModalTitle">
-                {{$projectTitle->projectName}}
+                {{ucfirst($projectTitle->category)}}
             </a>
 
             <div class="modal fade" id="exampleModalTitle" tabindex="-1" role="dialog"
@@ -20,15 +31,12 @@
                                 <span aria-hidden="true">×</span>
                             </a>
                         </div>
-                        {{--<form method="post" id="" action="{{route('projectContentTitle')}}">--}}
-                        {{--{{csrf_field()}}--}}
                         <div class="modal-body base1">
-
                             <div style="text-align:left" class="form-group base2">
                                 <label for="recipient-name" class="col-form-label">Title:</label>
                                 <input type="hidden" id="myProject_id" name="project_id" value="{{$projectTitle->id}}">
-                                <input type="text" id="myContentTitleUpdate" class="form-control"
-                                       value="{{$projectTitle->projectName}}" name="contentTitle">
+                                <input type="text" id="myCategory" class="form-control"
+                                       value="{{$projectTitle->category}}" name="contentTitle">
                             </div>
                             <p><code id="msgHere"></code></p>
                         </div>
@@ -36,40 +44,49 @@
                             <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
                             <a href="#" id="updateProject" class="btn btn-primary" data-dismiss="modal">Update</a>
                         </div>
-                        {{--</form>--}}
                     </div>
                 </div>
             </div>
-        </div>
+            <p id="myPrice_Language">price: <span class="label label-primary">{{$projectTitle->price}}</span> <br> language: <span
+                        class="label label-primary">{{$projectTitle->language}}</span></p>
 
+        </div>
         <div class="col-md-6" style="text-align: right">
             <div class="row">
                 <div class="col-md-9">
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             @if(Auth::guard('admin')->user()->privileges==='Super Admin')
                                 <form method="post" action="{{route('deleteProject')}}">
                                     {{csrf_field()}}
-                                    <button class="btn btn-danger" name="project_id" value="{{$projectTitle->id}}" type="submit"><i
+                                    <button class="btn btn-danger" name="project_id" value="{{$projectTitle->id}}"
+                                            type="submit"><i
                                                 class="fa fa-trash-alt"></i></button>
                                 </form>
                             @endif
 
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <form method="post" action="{{route('previewPdf')}}">
                                         {{csrf_field()}}
                                         <input type="hidden" name="project_id" value="{{$projectTitle->id}}">
-                                        <button class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                                        <button class="btn btn-default"><i class="fa fa-eye"></i></button>
                                     </form>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-4">
+                                    <form method="post" action="{{route('previewPdf')}}">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="project_id" value="{{$projectTitle->id}}">
+                                        <button class="btn btn-info"><i class="fa fa-file-pdf"></i></button>
+                                    </form>
+                                </div>
+                                <div class="col-md-4">
 
                                     <a class="word-export btn btn-primary"
                                        href="{{route('downloadWord',$projectTitle->id)}}"><i
-                                                class="fa fa-home"></i></a>
+                                                class="fa fa-file-word"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -237,10 +254,5 @@
 
 @section('my-footer')
     <script src="{{URL::to('js/projectContent.js')}}"></script>
-    <style>
-        .hidden {
-            display: none;
-        }
 
-    </style>
 @endsection

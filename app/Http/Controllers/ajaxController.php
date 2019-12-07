@@ -36,9 +36,9 @@ class ajaxController extends Controller
 //
         $project_id = $request->project_id;
         $project = Project::find($project_id);
-        $project->projectName = $request->project_name;
+        $project->category = $request->category;
         $project->save();
-        return response()->json($request->project_name);
+        return response()->json($request->category);
 
     }
 

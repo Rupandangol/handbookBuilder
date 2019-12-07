@@ -20,12 +20,12 @@ $(function () {
     function updateProject() {
 
         var project_id = $('#myProject_id').val();
-        var project_name = $('#myContentTitleUpdate').val();
-        if (project_name) {
+        var category = $('#myCategory').val();
+        if (category) {
             var base_url = window.location.origin;
             $.ajax({
                 url: base_url + "/@admin@/api/updateProject",
-                data: {'project_id': project_id, 'project_name': project_name},
+                data: {'project_id': project_id, 'category': category},
                 cache: false,
                 success: function (data) {
                     $('#myProjectTitle').text(data);
@@ -38,10 +38,9 @@ $(function () {
                 }
             });
         }
-
     }
 
-    $('#myContentTitleUpdate').on('keyup', function (e) {
+    $('#myCategory').on('keyup', function (e) {
         if (e.keyCode === 13) {
             $('#updateProject').click();
         }

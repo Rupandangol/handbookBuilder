@@ -208,7 +208,6 @@
                             </div>
                         </li>
 
-
                         <li class="nav-item ">
 
                             <a class="nav-link" href="{{route('viewLog')}}"><i class="fa fa-history"></i>Log</a>

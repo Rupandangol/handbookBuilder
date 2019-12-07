@@ -14,4 +14,13 @@ class UserList extends Authenticatable
         'password',
         'status'
     ];
+
+    public function getUserInfo()
+    {
+        return $this->hasOne(
+            'App\Model\Frontend\UserInfo',
+            'user_id',
+            'id'
+        );
+    }
 }

@@ -29,23 +29,25 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () 
     Route::get('/manageAdmin/delete/{id}', 'backendController@deleteAdmin')->name('deleteAdmin');
     Route::get('/manageAdmin/update/{id}', 'backendController@updateAdmin')->name('updateAdmin');
     Route::post('/manageAdmin/update/{id}', 'backendController@updateAdminAction');
-    Route::get('/api/adminStatus','ajaxController@adminStatus')->name('adminStatus');
+    Route::get('/api/adminStatus', 'ajaxController@adminStatus')->name('adminStatus');
 
 //    User
-    Route::get('/userList','backendController@userList')->name('myUserList');
+    Route::get('/userList', 'userBackendController@userList')->name('myUserList');
+    Route::get('/api/userStatus', 'ajaxController@userStatus')->name('userStatus');
 
-    Route::get('/api/userStatus','ajaxController@userStatus')->name('userStatus');
-
+    Route::get('/userList/userInfo/{id}', 'userBackendController@userInfo')->name('userInfo-backend');
+    Route::get('/userList/userProject/{id}', 'userBackendController@userProject')->name('userProject');
+    Route::get('/api/deleteCodeChange', 'userBackendController@deleteCodeChange')->name('deleteCodeChange');
 
 
 //    Project
     Route::post('/newProject', 'backendController@newProject')->name('newProject');
     Route::get('/projectLists', 'backendController@projectLists')->name('projectLists');
 //    Route::get('/api/deleteProject', 'ajaxController@deleteProject')->name('deleteProject');
-    Route::post('/projectLists/deleteProject','backendController@deleteProject')->name('deleteProject');
+    Route::post('/projectLists/deleteProject', 'backendController@deleteProject')->name('deleteProject');
 
     Route::get('/api/updateProject', 'ajaxController@updateProject')->name('updateProject');
-    Route::get('/api/projectStatus','ajaxController@projectStatus')->name('projectStatus');
+    Route::get('/api/projectStatus', 'ajaxController@projectStatus')->name('projectStatus');
 
 //    content
 
@@ -68,12 +70,12 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () 
     Route::post('/previewPdf', 'pdfController@previewPdf')->name('previewPdf');
 
 //    previewWord
-    Route::get('/downloadWord/{id}','wordController@downloadWord')->name('downloadWord');
+    Route::get('/downloadWord/{id}', 'wordController@downloadWord')->name('downloadWord');
 
 
 //    LOG
-    Route::get('/Log','logController@viewLog')->name('viewLog');
-    Route::get('/api/searchLog','logController@searchLog')->name('searchLog');
+    Route::get('/Log', 'logController@viewLog')->name('viewLog');
+    Route::get('/api/searchLog', 'logController@searchLog')->name('searchLog');
 
 });
 
@@ -81,10 +83,36 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () 
 //Frontend
 
 Route::get('/loginUser', 'userLoginController@userLogin')->name('loginUser');
-Route::post('/loginUser','userLoginController@userLoginAction');
+Route::post('/loginUser', 'userLoginController@userLoginAction');
+Route::get('/logoutUser', 'userLoginController@userLogout')->name('user-logout');
 
-Route::get('/register','userLoginController@userRegister')->name('registerUser');
-Route::post('/register','userLoginController@userRegisterAction');
+Route::get('/register', 'userLoginController@userRegister')->name('registerUser');
+Route::post('/register', 'userLoginController@userRegisterAction');
+
+Route::group(['middleware' => 'auth:userList'], function () {
+    Route::get('/dashboard', 'frontendController@dashboard')->name('frontend-dashboard');
+
+    Route::get('/userInfoForm', 'frontendController@userInfoForm')->name('userInfoForm');
+    Route::post('/userInfoForm', 'frontendController@userInfoFormAction');
+    Route::group(['prefix' => '/handbookList', 'middleware' => 'checkUserInfo'], function () {
+        Route::get('/', 'userHandbookController@handbookList')->name('handbookList');
+        Route::get('/api/fetchLanguage', 'userHandbookController@fetchLanguage')->name('fetchLanguage');
+        Route::get('/api/createUserHandbook', 'userHandbookController@createUserHandbook')->name('createUserHandbook');
+//        handbook
+        Route::get('/titleContents/{id}', 'userHandbookController@titleContents')->name('handbookContentTitle');
+        Route::get('/contents/{id}', 'userHandbookController@contents')->name('handbookContent');
+        Route::post('/contents/{id}', 'userHandbookController@contentsUpdate');
+
+//        pdf User
+        Route::post('/userPdfView/', 'userPdfController@userPdfView')->name('userPdfView');
+        Route::post('/userPdfDownload/', 'userPdfController@userPdfDownload')->name('userPdfDownload');
+
+        Route::get('/api/includeCode/', 'userHandbookController@includeCode')->name('include');
+
+    });
+});
+
+
 
 //AUth
 //Auth::routes();

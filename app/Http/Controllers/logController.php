@@ -19,12 +19,10 @@ class logController extends Controller
         $query = $request->myQuery;
 
         if ($query) {
-
             $data = Log::where('admin_name', 'like', '%' . $query . '%')
                 ->orWhere('activity','like','%'.$query.'%')
-                ->orWhere('project_name','like','%'.$query.'%')
+                ->orWhere('category_name','like','%'.$query.'%')
                 ->get();
-
         } else {
             $data = Log::orderBy('id', 'DESC')->get();
         }
@@ -40,7 +38,7 @@ class logController extends Controller
                     <td width=\"100px\">" . \Carbon\Carbon::parse($value->created_at)->setTimezone('Asia/Kathmandu')->format('h:i') . "</td>
                     <td>
                         <b><span class=\"badge badge-primary\">" . ucfirst($value->admin_name) . "</span> </b><br>                        
-                            ".$activity."&nbsp;&nbsp; Project &nbsp;&nbsp;". $value->project_name . "&nbsp;&nbsp;" . $value->activity . "
+                            ".$activity."&nbsp;&nbsp; Category &nbsp;&nbsp;". $value->category_name . "&nbsp;&nbsp;" . $value->activity . "
                     </td>
                     <td style=\"text-align: right\">" . \Carbon\Carbon::parse($value->created_at)->format('l, M d Y') . "</td>
                 </tr>";

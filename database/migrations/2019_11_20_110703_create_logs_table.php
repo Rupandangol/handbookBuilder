@@ -17,7 +17,7 @@ class CreateLogsTable extends Migration
             $table->bigIncrements('id');
             $table->string('admin_name');
             $table->string('activity');
-            $table->string('project_name');
+            $table->string('category_name');
             $table->string('content_title_name')->nullable();
             $table->timestamps();
         });

@@ -97,7 +97,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Project Title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Employee Handbook</h5>
                                 <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </a>
@@ -107,8 +107,14 @@
                                 <div class="modal-body">
 
                                     <div class="form-group">
-                                        <label for="recipient-name" class="col-form-label">Project Name:</label>
-                                        <input id="projectName" type="text" class="form-control" name="projectName">
+                                        <label for="recipient-name" class="col-form-label">Category:</label>
+                                        <input type="text" id="category" class="form-control" name="category">
+
+                                        <label for="recipient-name" class="col-form-label">Language:</label>
+                                        <select name="language" class="form-control" id="input-select">
+                                            <option>Nepali</option>
+                                            <option>English</option>
+                                        </select>
                                     </div>
                                     <p><code id="msgHere"></code></p>
 
@@ -131,9 +137,9 @@
     <script>
         $(function () {
             $('#projectSubmit').on('click', function (e) {
-                var value = $('#projectName').val();
+                var value = $('#category').val();
                 if (!value) {
-                    $('#msgHere').text('Enter Project Name');
+                    $('#msgHere').text('Enter category');
                     e.preventDefault();
                 }
             });

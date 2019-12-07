@@ -15,20 +15,18 @@ class userLoginController extends Controller
 
     public function userLoginAction(Request $request)
     {
-
         $request->validate([
             'username' => 'required',
             'password' => 'required'
         ]);
-
         $username = $request->username;
         $password = $request->password;
         $rememberMe = isset($request->remember_me);
 
         if (Auth::guard('userList')->attempt(['username' => $username, 'password' => $password, 'status' => 1], $rememberMe)) {
-            return 'asdf';
+            return redirect()->intended(route('frontend-dashboard'));
         }
-        return 'qwe';
+        return redirect()->back()->with('fail','Failed to logIn');
     }
 
     public function userRegister()
@@ -49,9 +47,13 @@ class userLoginController extends Controller
         $data['password'] = bcrypt($request->password);
         $data['status'] = 1;
         if (UserList::create($data)) {
-            return 'asdf';
+            return redirect(route('loginUser'));
         }
-        return 'qwe';
+        return redirect(route('loginUser'))->with('fail','Error');
 
+    }
+    public function userLogout(){
+        Auth::guard('userList')->logout();
+        return redirect(route('loginUser'))->with('success','Successfully Logged Out');
     }
 }

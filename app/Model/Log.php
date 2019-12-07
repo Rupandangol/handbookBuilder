@@ -10,7 +10,7 @@ class Log extends Model
     protected $fillable = [
         'admin_name',
         'activity',
-        'project_name',
+        'category_name',
         'content_title_name'
     ];
 }
