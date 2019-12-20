@@ -1,7 +1,7 @@
 @include('Frontend.layouts.header')
 <body style="height: 100%;">
 
-<div class="header-top-area">
+<div style="background-color: #3498db " class="header-top-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -15,47 +15,46 @@
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="header-top-menu">
                     <ul class="nav navbar-nav notika-top-nav">
-                        <li class="nav-item dropdown">
-                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-                               class="nav-link dropdown-toggle"><span><i
-                                            class="notika-icon notika-search"></i></span></a>
-                            <div role="menu" class="dropdown-menu search-dd animated flipInX">
-                                <div class="search-input">
-                                    <i class="notika-icon notika-left-arrow"></i>
-                                    <input type="text"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-                               class="nav-link dropdown-toggle"><span><i class="notika-icon notika-mail"></i></span></a>
-                            <div role="menu" class="dropdown-menu message-dd animated swing">
-                                <div class="hd-mg-tt">
-                                    <h2>Messages</h2>
-                                </div>
-                                <div class="hd-message-info">
-                                    <a href="#">
-                                        <div class="hd-message-sn">
-                                            <div class="hd-message-img">
-                                                <img src="" alt=""/>
-                                            </div>
-                                            <div class="hd-mg-ctn">
-                                                <h3>David Belle</h3>
-                                                <p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="hd-mg-va">
-                                    <a href="#">View All</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item nc-al"><a href="#" data-toggle="dropdown" role="button"
+                        {{--<li class="nav-item dropdown">--}}
+                        {{--<a href="#" data-toggle="dropdown" role="button" aria-expanded="false"--}}
+                        {{--class="nav-link dropdown-toggle"><span><i--}}
+                        {{--class="notika-icon notika-search"></i></span></a>--}}
+                        {{--<div role="menu" class="dropdown-menu search-dd animated flipInX">--}}
+                        {{--<div class="search-input">--}}
+                        {{--<i class="notika-icon notika-left-arrow"></i>--}}
+                        {{--<input type="text"/>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--</li>--}}
+                        {{--<li  class="nav-item dropdown">--}}
+                        {{--<a href="#" id="msgColor" data-toggle="dropdown" role="button" aria-expanded="false"--}}
+                        {{--class="nav-link dropdown-toggle"><span><i class="notika-icon notika-mail"></i></span></a>--}}
+                        {{--<div role="menu" class="dropdown-menu message-dd animated swing">--}}
+                        {{--<div class="hd-mg-tt">--}}
+                        {{--<h2>Messages</h2>--}}
+                        {{--</div>--}}
+                        {{--<div class="hd-message-info">--}}
+                        {{--<a href="#">--}}
+                        {{--<div class="hd-message-sn">--}}
+                        {{--<div class="hd-message-img">--}}
+                        {{--<img src="" alt=""/>--}}
+                        {{--</div>--}}
+                        {{--<div class="hd-mg-ctn">--}}
+                        {{--<h3>David Belle</h3>--}}
+                        {{--<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--</a>--}}
+                        {{--</div>--}}
+                        {{--<div class="hd-mg-va">--}}
+                        {{--<a href="#">View All</a>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--</li>--}}
+                        <li class="nav-item nc-al"><a id="logoutColor" href="#" data-toggle="dropdown" role="button"
                                                       aria-expanded="false" class="nav-link dropdown-toggle"><span
                                         style="font-size: 15px">{{ucfirst(Auth::guard('userList')->user()->username)}}</span>
-                                <div class="spinner4 spinner-4"></div>
-                                <div class="ntd-ctn"><span>3</span></div>
+
                             </a>
                             <div role="menu" class="dropdown-menu message-dd notification-dd animated swing">
 
@@ -114,12 +113,12 @@
 
                                 </ul>
                             </li>
-                            <li><a data-toggle="collapse" data-target="#" href="#">Resources</a>
-                                <ul class="collapse dropdown-header-top">
-                                    <li><a href="index.html">Blogs</a></li>
+                            {{--<li><a data-toggle="collapse" data-target="#" href="#">Resources</a>--}}
+                                {{--<ul class="collapse dropdown-header-top">--}}
+                                    {{--<li><a href="index.html">Blogs</a></li>--}}
 
-                                </ul>
-                            </li>
+                                {{--</ul>--}}
+                            {{--</li>--}}
                             <li><a data-toggle="collapse" data-target="#" href="#">Setting</a>
                                 <ul class="collapse dropdown-header-top">
                                     <li><a href="{{route('userInfoForm')}}">User Info</a></li>
@@ -169,7 +168,7 @@
                     </div>
                     <div id="pricing" class="tab-pane notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
-                            <li><a href="#">List</a>
+                            <li><a href="{{route('priceList')}}">List</a>
                             </li>
                         </ul>
                     </div>
@@ -229,19 +228,19 @@
     </div>
 </div>
 
-
-<div class="footer-copyright-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="footer-copy-right">
-                    <p>Copyright ©
-                        <a href="#">TalentConnects</a>. All rights reserved.
-                    </p>
+<div style="width: 100%;">
+    <div style="background-color: #3498db;" class="footer-copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="footer-copy-right">
+                        <p>Copyright ©
+                            <a href="#">TalentConnects</a>. All rights reserved.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @include('Frontend.layouts.footer')

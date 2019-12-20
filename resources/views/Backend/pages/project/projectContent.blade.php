@@ -4,8 +4,17 @@
         .hidden {
             display: none;
         }
-        #myPrice_Language{
+
+        #myPrice_Language {
             font-size: 15px;
+        }
+
+        .editPLA {
+            cursor: pointer;
+        }
+
+        .editPLA:hover {
+            background-color: #27ae60;
         }
 
     </style>
@@ -47,8 +56,14 @@
                     </div>
                 </div>
             </div>
-            <p id="myPrice_Language">price: <span class="label label-primary">{{$projectTitle->price}}</span> <br> language: <span
-                        class="label label-primary">{{$projectTitle->language}}</span></p>
+            <p id="myPrice_Language">
+                Price:
+                <span id="editPrice" class="label label-primary editPLA">{{$projectTitle->price}}</span><br>
+                Language:
+                <span id="editLanguage" class="label label-primary editPLA">{{$projectTitle->language}}</span> <br>
+                Edit About:
+                <span id="editAbout" class="label label-primary editPLA">About</span>
+            </p>
 
         </div>
         <div class="col-md-6" style="text-align: right">

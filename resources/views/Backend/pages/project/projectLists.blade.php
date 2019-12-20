@@ -34,11 +34,13 @@
                                         <option>English</option>
                                     </select>
 
-                                    <label for="price" class="col-form-label">Price:</label>
-                                    <select name="price" class="form-control" id="input-select">
-                                        <option>Free</option>
-                                        <option>Paid</option>
-                                    </select>
+                                    <label for="price" class="col-form-label">Price: <code style="color: #2980b9">('Free'
+                                            or 'Price amount in Rupees')</code></label>
+                                    <input type="text" name="price" class="form-control">
+                                    <label for="about" class="col-form-label">About:</label>
+                                    <textarea class="form-control" name="about" id="project_about" cols="30"
+                                              rows="10"></textarea>
+
                                 </div>
                                 <p><code id="msgHere"></code></p>
 
@@ -78,17 +80,31 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="card-title">Category: {{ucfirst($value->category)}}</h3>
-                        <p class="card-text" style="height: 100px;overflow: hidden;">Lorem ipsum dolor sit amet,
-                            consectetur adipisicing elit. A aliquam amet
-                            animi asperiores deleniti dolores eaque earum facilis fuga harum incidunt, ipsa ipsum magnam
-                            minus nulla velit veniam voluptates. Illum.</p>
+                        <div class="card-text" style="height: 150px;overflow: hidden;">
+                            @if($value->about)
+                                <i>
+                                <?php
+
+                                echo  htmlspecialchars_decode($value->about);
+                                ?>
+                                </i>
+                            @else
+                                <p><i>BASIC INFORMATION</i></p>
+                            @endif
+                        </div>
+                        <br>
                         <div>
                             <div class="row">
                                 <div class="col-md-6">
                                     - {{$value->language}}
                                 </div>
                                 <div style="text-align: right" class="col-md-6">
-                                    - {{$value->price}}
+                                    @if($value->price==='Free')
+                                        - {{$value->price}}
+                                    @else
+                                        - Rs {{$value->price}}
+
+                                    @endif
                                 </div>
                             </div>
                             <p style="float: left">- {{ucfirst($value->project_created_by)}}</p>
@@ -174,6 +190,9 @@
             sessionFailMsg();
         })
     </script>
+    <script>
+        CKEDITOR.replace('project_about');
+    </script>
 @endsection
 @section('my-header')
     <style>
@@ -181,4 +200,7 @@
             display: none;
         }
     </style>
+
+    <script src="https://cdn.ckeditor.com/4.13.1/basic/ckeditor.js"></script>
 @endsection
+

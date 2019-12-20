@@ -21,7 +21,7 @@
                 <p>Place one add-on or button on either side of an input. You may also place one on both sides of an
                     input. </p>
             </div>
-            <form autocomplete="off" method="post" action="{{route('userInfoForm')}}">
+            <form autocomplete="off" method="post" enctype="multipart/form-data" action="{{route('userInfoForm')}}">
                 {{csrf_field()}}
 
                 @if($userInfo)

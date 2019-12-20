@@ -25,12 +25,13 @@
         {{csrf_field()}}
         <textarea name="handbook_content" id="myContent" cols="30" rows="10">
             {{
+            str_replace('src="/kcfinder/upload/images/logoDefault2.png','src="'.url('/uploads/UserLogo/'.$userInfo->logo),
             str_replace('|%paid_holiday%|',$userInfo->holiday,
             str_replace('|%no_of_sick_leave%|',$userInfo->no_of_sickLeave,
             str_replace('|%work_shift%|',$userInfo->workShift,
             str_replace('|%no_of_employee%|',$userInfo->no_of_employee,
             str_replace('|%company_name%|',$userInfo->companyName,
-            $hbContentTitle->hbContentFromContentTitle->handbook_content)))))
+            $hbContentTitle->hbContentFromContentTitle->handbook_content))))))
             }}
         </textarea>
         <br>

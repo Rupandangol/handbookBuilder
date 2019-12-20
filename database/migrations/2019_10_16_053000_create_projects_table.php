@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('editContentNo');
             $table->string('projectStatus')->nullable();
             $table->string('project_created_by')->nullable();
+            $table->text('about')->nullable();
             $table->string('category')->nullable();
             $table->string('language')->nullable();
             $table->string('price')->nullable();

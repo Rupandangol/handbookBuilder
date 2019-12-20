@@ -77,6 +77,8 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () 
     Route::get('/Log', 'logController@viewLog')->name('viewLog');
     Route::get('/api/searchLog', 'logController@searchLog')->name('searchLog');
 
+    Route::get('/khaltiLogView', 'khaltiController@khaltiLogView')->name('khaltiLogView');
+
 });
 
 
@@ -97,7 +99,11 @@ Route::group(['middleware' => 'auth:userList'], function () {
     Route::group(['prefix' => '/handbookList', 'middleware' => 'checkUserInfo'], function () {
         Route::get('/', 'userHandbookController@handbookList')->name('handbookList');
         Route::get('/api/fetchLanguage', 'userHandbookController@fetchLanguage')->name('fetchLanguage');
-        Route::get('/api/createUserHandbook', 'userHandbookController@createUserHandbook')->name('createUserHandbook');
+        Route::post('/selectUserHandbook', 'userHandbookController@selectUserHandbook')->name('selectUserHandbook');
+        Route::post('/createUserHandbook', 'userHandbookController@createUserHandbook')->name('createUserHandbook');
+        Route::get('/api/createUserHandbook', 'userHandbookController@apiCreateUserHandbook')->name('api_createUserHandbook');
+        Route::get('/api/khaltiLog', 'khaltiController@khaltiLog')->name('khaltiLog');
+
 //        handbook
         Route::get('/titleContents/{id}', 'userHandbookController@titleContents')->name('handbookContentTitle');
         Route::get('/contents/{id}', 'userHandbookController@contents')->name('handbookContent');
@@ -110,7 +116,13 @@ Route::group(['middleware' => 'auth:userList'], function () {
         Route::get('/api/includeCode/', 'userHandbookController@includeCode')->name('include');
 
     });
+    Route::get('/priceList', 'userHandbookController@priceList')->name('priceList');
+
 });
+
+
+Route::get('testKhalti', 'khaltiController@viewKhalti')->name('viewKhalti');
+Route::get('/payment/verification', 'khaltiController@verification')->name('paymentVerification');
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Admin;
+use App\Model\Frontend\KhaltiPaymentLog;
 use App\Model\Frontend\UserList;
 use App\Model\Log;
 use App\Model\Project;
@@ -19,6 +20,7 @@ class backendController extends Controller
         $data['admin'] = Admin::all();
         $data['user_list'] = UserList::all();
         $data['dashboard_active'] = 'active';
+        $data['totalEarned'] = KhaltiPaymentLog::all()->sum('amount');
         return view('Backend.pages.dashboard', $data);
 
     }
@@ -101,20 +103,21 @@ class backendController extends Controller
     public function newProject(Request $request)
     {
         $request->validate([
-            'category'=>'required',
-            'language'=>'required',
-            'price'=>'required',
+            'category' => 'required',
+            'language' => 'required',
+            'price' => 'required',
         ]);
         $data['editContentNo'] = 1;
         $data['project_created_by'] = Auth::guard('admin')->user()->username;
         $data['projectStatus'] = 0;
-        $data['category']=$request->category;
-        $data['language']=$request->language;
-        $data['price']=$request->price;
+        $data['category'] = $request->category;
+        $data['language'] = $request->language;
+        $data['price'] = $request->price;
+        $data['about'] = $request->about;
         if ($newProject = Project::create($data)) {
-            $item['admin_name']=$data['project_created_by'];
-            $item['activity']='Created';
-            $item['category_name']=$data['category'];
+            $item['admin_name'] = $data['project_created_by'];
+            $item['activity'] = 'Created';
+            $item['category_name'] = $data['category'];
             Log::create($item);
             return redirect()->back()->with('success', 'Created');
         }
@@ -238,9 +241,9 @@ class backendController extends Controller
         $data = Project::find($request->project_id);
         $categoryName = $data->category;
         $data->delete();
-        $item['admin_name']=Auth::guard('admin')->user()->username;
-        $item['activity']='Deleted';
-        $item['category_name']=$categoryName;
+        $item['admin_name'] = Auth::guard('admin')->user()->username;
+        $item['activity'] = 'Deleted';
+        $item['category_name'] = $categoryName;
         Log::create($item);
         return redirect(route('projectLists'))->with('fail', 'Project "' . $categoryName . '" is Deleted');
     }

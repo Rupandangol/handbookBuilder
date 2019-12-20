@@ -21,6 +21,7 @@ class CreateUserHandbooksTable extends Migration
             $table->integer('user_id')->unsigned()->nullable();
             $table->string('price')->nullable();
             $table->string('deleteCode')->nullable();
+            $table->text('about')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('user_lists')->onDelete('cascade')->onUpdate('cascade');
         });

@@ -13,6 +13,7 @@ class UserHandbook extends Model
         'language',
         'price',
         'deleteCode',
+        'about',
         'user_id'
     ];
 

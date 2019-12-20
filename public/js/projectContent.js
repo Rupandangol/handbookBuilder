@@ -1,4 +1,3 @@
-
 $(function () {
     $('#editUpDown').on('click', function () {
         var project_id = $(this).parent().parent().find('input').val();
@@ -45,7 +44,9 @@ $(function () {
             $('#updateProject').click();
         }
     });
+
     setTimeout(function () {
         $('.sessionValue').fadeOut('fast');
-    },1000);
+    }, 1000);
+
 });

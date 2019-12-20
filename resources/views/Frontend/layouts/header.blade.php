@@ -41,6 +41,11 @@
     <link rel="stylesheet" href="{{URL::to('frontendLib/responsive.css')}}">
 
     <script src="{{URL::to('frontendLib/js/vendor/modernizr-2.8.3.min.js')}}" type=""></script>
+    <style>
+        #logoutColor,#msgColor:hover{
+            background-color: #3498db;
+        }
+    </style>
 
     @yield('my-header')
 </head>

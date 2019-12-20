@@ -13,6 +13,7 @@ class Project extends Model
         'project_created_by',
         'language',
         'category',
+        'about',
         'price'
     ];
 }

@@ -11,8 +11,13 @@
             <div class="card">
                 <div class="card-body">
                     <div class="user-avatar text-center d-block">
-                        <img src="{{url('/uploads/logo/logoDefault2.png')}}" alt="User Avatar"
-                             class="rounded-circle user-avatar-xxl">
+                        @if($userLoginData->getUserInfo->logo)
+                            <img src="{{url('/uploads/UserLogo/'.$userLoginData->getUserInfo->logo)}}" alt="User Avatar"
+                                 class="rounded-circle user-avatar-xxl">
+                        @else
+                            <img src="{{url('/uploads/logo/logoDefault2.png')}}" alt="User Avatar"
+                                 class="rounded-circle user-avatar-xxl">
+                        @endif
                     </div>
                     <div class="text-center">
                         <h2 class="font-24 mb-0">{{ucfirst($userLoginData->username)}}</h2>

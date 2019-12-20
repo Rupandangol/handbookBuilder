@@ -210,7 +210,12 @@
 
                         <li class="nav-item ">
 
-                            <a class="nav-link" href="{{route('viewLog')}}"><i class="fa fa-history"></i>Log</a>
+                            <a class="nav-link" href="{{route('viewLog')}}"><i class="fa fa-history"></i>Admin-Log</a>
+
+                        </li>
+                        <li class="nav-item ">
+
+                            <a class="nav-link" href="{{route('khaltiLogView')}}"><i class="fa fa-history"></i>Khalti-Log</a>
 
                         </li>
 

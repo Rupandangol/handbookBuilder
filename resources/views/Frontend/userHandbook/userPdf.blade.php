@@ -19,13 +19,15 @@
     @if($value->hbContentFromContentTitle)
         <?php
         echo htmlspecialchars_decode(
-            str_replace('|%paid_holiday%|', $userInfo->holiday,
-                str_replace('|%no_of_sick_leave%|', $userInfo->no_of_sickLeave,
-                    str_replace('|%work_shift%|', $userInfo->workShift,
-                        str_replace('|%no_of_employee%|', $userInfo->no_of_employee,
-                            str_replace('|%company_name%|', $userInfo->companyName,
-                                str_replace('src="/kcfinder/upload', 'src="' . url('kcfinder/upload'),
-                                    $value->hbContentFromContentTitle->handbook_content)
+            str_replace('src="/kcfinder/upload', 'src="' . url('kcfinder/upload'),
+                str_replace('src="/kcfinder/upload/images/logoDefault2.png', 'src="' . url('/uploads/UserLogo/' . $userInfo->logo),
+                    str_replace('|%paid_holiday%|', $userInfo->holiday,
+                        str_replace('|%no_of_sick_leave%|', $userInfo->no_of_sickLeave,
+                            str_replace('|%work_shift%|', $userInfo->workShift,
+                                str_replace('|%no_of_employee%|', $userInfo->no_of_employee,
+                                    str_replace('|%company_name%|', $userInfo->companyName,
+                                        $value->hbContentFromContentTitle->handbook_content)
+                                )
                             )
                         )
                     )
@@ -53,6 +55,8 @@ if ( isset($pdf) ) {
         }
     ');
 }
+
+
 
 
 

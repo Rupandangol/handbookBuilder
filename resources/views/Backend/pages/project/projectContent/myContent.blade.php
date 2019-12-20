@@ -8,7 +8,7 @@
 
         </div>
         <div class="col-md-6 col-xs-9">
-            <span data-toggle="tooltip" data-placement="bottom" title="Company Name=|%companyName%| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="background-color: #8e44ad" data-toggle="tooltip" data-placement="bottom" class="label label-primary" title="Company Name=|%companyName%| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             no of employee=|%no_of_employee%| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             work Shift=|%work_shift%| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             no of Sick Leave=|%no_of_sick_leave%| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -60,7 +60,7 @@
             filebrowserUploadUrl: '',
             filebrowserUploadMethod: 'form',
             height: 500,
-            width: 1350
+            width: 1050
         });
     </script>
 

@@ -43,7 +43,7 @@
                 <td>
                     {{ucfirst($value->handbookContentTitle)}}
                 </td>
-                <td><a href="{{route('handbookContent',$value->id)}}"><i class="notika-icon notika-app"></i></a></td>
+                <td><a class="btn btn-primary" href="{{route('handbookContent',$value->id)}}">Edit</a></td>
                 <td>
                     @if($value->include==='1')
                         <button value="{{$value->id}}" class="btn btn-danger include">Exclude</button>
