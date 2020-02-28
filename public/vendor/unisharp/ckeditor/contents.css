@@ -2,6 +2,7 @@
 Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
+/**/
 
 body
 {
@@ -205,4 +206,11 @@ a > img {
 	max-width: 1920px;
 	max-height: 1080px;
 	margin:0 auto;
+}
+@font-face {
+    font-family: 'Preeti';
+    src: url('lang/Preeti/PREETI.eot');
+    src: local("Preeti"), url("lang/Preeti/PREETI.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }

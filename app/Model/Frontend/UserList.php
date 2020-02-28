@@ -12,7 +12,8 @@ class UserList extends Authenticatable
         'username',
         'email',
         'password',
-        'status'
+        'status',
+        'reset_token'
     ];
 
     public function getUserInfo()

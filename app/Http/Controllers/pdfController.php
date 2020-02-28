@@ -13,7 +13,7 @@ class pdfController extends Controller
     {
         $data=ProjectContentTitle::where(['project_id'=>$request->project_id])->orderBy('order_by','asc')->get();
 //        return view('Backend.pages.project.pdf',compact('data'));
-        $pdf = PDF::loadView('Backend.pages.project.pdf',compact('data','cktext'));
+        $pdf = PDF::loadView('Backend.pages.project.pdf',compact('data'));
         return $pdf->stream();
     }
 }

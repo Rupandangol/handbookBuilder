@@ -2,7 +2,7 @@
 @section('heading')
     <div class="row">
         <div class="col-md-6">
-            Employee Handbook
+            BUILDER
         </div>
         <div class="col-md-6" style="text-align: right">
             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -25,8 +25,20 @@
 
                                 <div style="text-align:left" class="form-group">
 
+                                    <label for="publicOrPrivate" class="col-form-label">Company Type:</label>
+                                    <select name="publicOrPrivate" class="form-control">
+                                        <option>Public</option>
+                                        <option>Private</option>
+                                    </select>
+
                                     <label for="category" class="col-form-label">Category:</label>
                                     <input type="text" id="category" class="form-control" name="category">
+
+                                    <label for="type" class="col-form-label">Type:</label>
+                                    <select name="type" class="form-control">
+                                        <option>Handbook</option>
+                                        <option>Document</option>
+                                    </select>
 
                                     <label for="language" class="col-form-label">Language:</label>
                                     <select name="language" class="form-control" id="input-select">
@@ -77,57 +89,64 @@
         @forelse($projectLists as $key=>$value)
 
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-title">Category: {{ucfirst($value->category)}}</h3>
-                        <div class="card-text" style="height: 150px;overflow: hidden;">
-                            @if($value->about)
-                                <i>
-                                <?php
-
-                                echo  htmlspecialchars_decode($value->about);
-                                ?>
-                                </i>
+                <div class="card" style="color: white;text-shadow: 0 0 15px blue">
+                    @if($value->type==='Document')
+                        <div
+                            style="background-image: url('/uploads/backgroundImage/file2.jpg');background-repeat: no-repeat;background-size: COVER;box-shadow: 0 0 15px black;border-radius: 20px"
+                            class="card-body">
                             @else
-                                <p><i>BASIC INFORMATION</i></p>
+                                <div
+                                    style="background-image: url('/uploads/backgroundImage/handbook.jpeg');background-repeat: no-repeat;background-size: auto;box-shadow: 0 0 15px black;border-radius: 20px"
+                                    class="card-body">
                             @endif
-                        </div>
-                        <br>
-                        <div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    - {{$value->language}}
-                                </div>
-                                <div style="text-align: right" class="col-md-6">
-                                    @if($value->price==='Free')
-                                        - {{$value->price}}
-                                    @else
-                                        - Rs {{$value->price}}
 
-                                    @endif
-                                </div>
+
+                            <h3 style="color: white" class="card-title">Category: {{ucfirst($value->category)}}</h3>
+                            <div class="card-text" style="height: 150px;overflow: hidden;">
+                                @if($value->about)
+                                    <i>
+                                        {{$value->about}}
+                                    </i>
+                                @else
+                                    <p><i>BASIC INFORMATION</i></p>
+                                @endif
                             </div>
-                            <p style="float: left">- {{ucfirst($value->project_created_by)}}</p>
-                            <a style="float: right;margin-left: 3px" href="{{route('projectContent',$value->id)}}"
-                               class="btn btn-primary"><i
+                            <br>
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        - {{$value->language}}
+                                    </div>
+                                    <div style="text-align: right" class="col-md-6">
+                                        @if($value->price==='Free')
+                                            - {{$value->price}}
+                                        @else
+                                            - Rs {{$value->price}}
+
+                                        @endif
+                                    </div>
+                                </div>
+                                <p style="float: left">- {{ucfirst($value->project_created_by)}}</p>
+                                <a style="float: right;margin-left: 3px" href="{{route('projectContent',$value->id)}}"
+                                   class="btn btn-primary"><i
                                         class="fa fa-level-down-alt"></i></a>
-                            @if($value->projectStatus==='1')
-                                <button style="float: right" value="{{$value->id}}"
-                                        class="btn btn-primary projectStatus">
+                                @if($value->projectStatus==='1')
+                                    <button style="float: right" value="{{$value->id}}"
+                                            class="btn btn-primary projectStatus">
 
 
-                                    <i class="fa fa-toggle-on"></i>
-                                </button>
+                                        <i class="fa fa-toggle-on"></i>
+                                    </button>
 
-                            @else
-                                <button style="float: right" value="{{$value->id}}"
-                                        class="btn btn-default projectStatus">
-                                    <i class="fa fa-toggle-off"></i>
-                                </button>
+                                @else
+                                    <button style="float: right" value="{{$value->id}}"
+                                            class="btn btn-default projectStatus">
+                                        <i class="fa fa-toggle-off"></i>
+                                    </button>
 
-                            @endif
+                                @endif
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
         @empty
@@ -166,8 +185,7 @@
                         if (data === '1') {
                             btn.prop('class', 'btn btn-primary projectStatus');
                             btnIcon.prop('class', 'fa fa-toggle-on');
-                        }
-                        else {
+                        } else {
                             btn.prop('class', 'btn btn-default projectStatus');
 
                             btnIcon.prop('class', 'fa fa-toggle-off');
@@ -190,9 +208,9 @@
             sessionFailMsg();
         })
     </script>
-    <script>
-        CKEDITOR.replace('project_about');
-    </script>
+    {{--    <script>--}}
+    {{--        CKEDITOR.replace('project_about');--}}
+    {{--    </script>--}}
 @endsection
 @section('my-header')
     <style>
@@ -201,6 +219,6 @@
         }
     </style>
 
-    <script src="https://cdn.ckeditor.com/4.13.1/basic/ckeditor.js"></script>
+    {{--    <script src="https://cdn.ckeditor.com/4.13.1/basic/ckeditor.js"></script>--}}
 @endsection
 

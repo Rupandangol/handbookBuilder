@@ -47,6 +47,11 @@
                     {{session('fail')}}
                 </code>
             @endif
+            @if(session('success'))
+                <code style="color: green" class="logout-msg">
+                    {{session('success')}}
+                </code>
+            @endif
             @if(session('logout-msg'))
                 <code class="logout-msg">
                     {{session('logout-msg')}}
@@ -75,7 +80,7 @@
             <div class="card-footer-item card-footer-item-bordered">
                 <a href="{{route('registerUser')}}" class="footer-link">Create An Account</a></div>
             <div class="card-footer-item card-footer-item-bordered">
-                <a href="#" class="footer-link">Forgot Password</a>
+                <a href="{{route('userForgotPassword')}}" class="footer-link">Forgot Password</a>
             </div>
         </div>
     </div>

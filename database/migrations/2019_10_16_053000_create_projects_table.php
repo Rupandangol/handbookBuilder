@@ -20,7 +20,9 @@ class CreateProjectsTable extends Migration
             $table->string('projectStatus')->nullable();
             $table->string('project_created_by')->nullable();
             $table->text('about')->nullable();
+            $table->string('publicOrPrivate')->nullable();
             $table->string('category')->nullable();
+            $table->string('type')->nullable();
             $table->string('language')->nullable();
             $table->string('price')->nullable();
             $table->timestamps();

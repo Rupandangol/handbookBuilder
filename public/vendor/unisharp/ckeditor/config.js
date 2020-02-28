@@ -13,4 +13,11 @@ CKEDITOR.editorConfig = function( config ) {
     config.filebrowserUploadUrl = '/kcfinder/upload.php?opener=ckeditor&type=files';
     config.filebrowserImageUploadUrl = '/kcfinder/upload.php?opener=ckeditor&type=images';
     config.filebrowserFlashUploadUrl = '/kcfinder/upload.php?opener=ckeditor&type=flash';
+
+
+    config.font_names =  'Preeti;'+config.font_names;
+
+
+
+
 };

@@ -11,6 +11,14 @@
     .page_break {
         page-break-before: always;
     }
+    @font-face {
+        src: url("vendor/dompdf/dompdf/lib/fonts/PREETI.ttf") format('truetype');
+        font-family: "Preeti";
+    }
+    body{
+        font-family: 'Preeti', sans-serif;
+    }
+
 </style>
 
 <body>

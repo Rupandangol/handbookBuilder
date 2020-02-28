@@ -76,7 +76,7 @@
             {{--<div class="card-footer-item card-footer-item-bordered">--}}
             {{--<a href="#" class="footer-link">Create An Account</a></div>--}}
             <div class="card-footer-item card-footer-item-bordered">
-                <a href="#" class="footer-link">Forgot Password</a>
+                <a href="{{route('forgotPassword')}}" class="footer-link">Forgot Password</a>
             </div>
         </div>
     </div>

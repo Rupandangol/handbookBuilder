@@ -57,8 +57,12 @@ class khaltiController extends Controller
 
     public function khaltiLogView()
     {
-        $data=KhaltiPaymentLog::all();
-        return view('Backend.pages.log.khalti-log',compact('data'));
+        if (Auth::guard('admin')->user()->privileges != 'Lawyer') {
+            $khaltiLogView_active = 'active';
+            $data = KhaltiPaymentLog::orderBy('id','desc')->get();
+            return view('Backend.pages.log.khalti-log', compact('data', 'khaltiLogView_active'));
+        }
+        return redirect()->back();
     }
 
 

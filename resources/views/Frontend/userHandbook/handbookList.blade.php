@@ -1,55 +1,25 @@
 @extends('Frontend.master')
+
+@section('my-header')
+    <style>
+        #card:hover {
+            background-color: navajowhite;
+        }
+
+        .card:hover{
+            transition: transform 1.2s;
+            transform: scale(1.05);
+        }
+
+    </style>
+
+
+@endsection
 @section('icon-header')
     <i class="notika-icon notika-form"></i>
 @endsection
 @section('upper-header')
-    Handbook List
-@endsection
-@section('button-header')
-    <button type="button" class="btn btn-info waves-effect" data-toggle="modal" data-target="#myModalfour">+ Create new
-        handbook
-    </button>
-    <form method="post" action="{{route('selectUserHandbook')}}">
-        {{csrf_field()}}
-        <div class="modal animated bounce" id="myModalfour" role="dialog" style="display: none;text-align: left">
-            <div class="modal-dialog modals-default">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <h2>Employee Handbook</h2>
-                        <div class="form-group">
-                            <div>
-                                <label for="">Industry</label>
-                                <select class="form-control" name="category" id="myCategory">
-                                    <option value="empty">-----Choose Industry-----</option>
-                                    @forelse($project as $value)
-                                        <option value="{{$value}}">{{ucfirst($value)}}</option>
-                                    @empty
-                                    @endforelse
-
-                                </select>
-                            </div>
-                            <div>
-                                <label for="">Language</label>
-                                <select class="form-control" name="language" id="myLanguage">
-                                    <option value="empty">----------</option>
-                                </select>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-default waves-effect" id="createUserHandbook"
-                        >Create New
-                        </button>
-                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
+    My List
 @endsection
 
 @section('lower-header')
@@ -72,52 +42,64 @@
     <div id="myCard" class="row">
         @forelse($handbook as $key=>$value)
             <div style="margin-bottom: 10px;text-align: left" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <a href="{{route('handbookContentTitle', $value->id)}}">
-                    <div class="contact-inner " id="card">
-                        <div class="contact-hd widget-ctn-hd">
-                            <h2>{{ucfirst($value->category)}}</h2>
-                            @if($value->about)
-                                <?php
-                                echo str_limit(htmlspecialchars_decode($value->about),200);
-                                ?>
+                <a title="{{$value->about}}" href="{{route('handbookContentTitle', $value->id)}}">
+                    @if($value->type==='Handbook')
+                        <div
+                            style="background-image: url('/uploads/backgroundImage/handbook.jpeg');background-repeat: no-repeat;background-size:cover;text-shadow: 0 0 15px white;border-radius: 20px;"
+                            class="contact-inner card">
                             @else
-                                <p>
-                                    <i>Basic Information</i>
-                                </p>
-                            @endif
-                        </div>
-                        <br>
-                        <div class="row">
-                            @if($value->language==='Nepali')
-                                <div class="col-md-6">- <span
-                                            class="label label-primary">{{$value->language}}</span>
+                                <div
+                                    style="background-image: url('/uploads/backgroundImage/file2.jpg');background-repeat: no-repeat;background-size:cover;text-shadow: 0 0 15px white;border-radius: 20px;"
+                                    class="contact-inner card">
+                                    @endif
+                                    <div class="contact-hd widget-ctn-hd" style="height: 220px">
+                                        <h2 style="color: white">{{ucfirst($value->category)}}</h2>
+                                        <p style="color: white">
+                                            <i><b>-{{$value->publicOrPrivate}}</b><br><b>-{{$value->type}}</b></i></p>
+                                        @if($value->about)
+                                            <p style="color: white">
+                                                {{str_limit($value->about,200)}}
+                                            </p>
+                                        @else
+                                            <p>
+                                                <i>Basic Information</i>
+                                            </p>
+                                        @endif
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        @if($value->language==='Nepali')
+                                            <div class="col-md-6">- <span
+                                                    class="label label-primary">{{$value->language}}</span>
+                                            </div>
+                                        @else
+                                            <div class="col-md-6">- <span
+                                                    class="label label-warning">{{$value->language}}</span>
+                                            </div>
+                                        @endif
+                                        @if($value->price==='Free')
+                                            <div class="col-md-6">
+                                                - <span class="label label-default">{{$value->price}}</span>
+                                            </div>
+                                        @else
+                                            <div class="col-md-6">
+                                                - <span class="label label-success">Rs {{$value->price}}</span>
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
-                            @else
-                                <div class="col-md-6">- <span
-                                            class="label label-warning">{{$value->language}}</span>
-                                </div>
-                            @endif
-                            @if($value->price==='Free')
-                                <div class="col-md-6">
-                                    - <span class="label label-default">{{$value->price}}</span>
-                                </div>
-                            @else
-                                <div class="col-md-6">
-                                    - <span class="label label-success">Rs {{$value->price}}</span>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
+
                 </a>
             </div>
         @empty
             <div style="margin-bottom: 10px;text-align: left" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <a href="">
+                <a href="{{route('builderList')}}">
                     <div class="contact-inner " id="card">
                         <div class="contact-hd widget-ctn-hd">
                             <h2>Your Handbook List</h2>
-                            <p>You can create your handbook by clicking in the top-right button <span
-                                        style="color: green; border:1px solid green" class="label label-light">+ Create new handbook</span>
+                            <p>You can create your Handbook or Document by going to Builder List or <span
+                                    style="color: green; border:1px solid green"
+                                    class="label label-light">Click here</span>
                             </p>
                         </div>
                         <br>
@@ -126,10 +108,17 @@
             </div>
         @endforelse
     </div>
+    <input type="hidden" id="onLoad" value="{{session('success')}}" name="onLoad">
 @endsection
 @section('my-footer')
     <script>
         $(function () {
+            var onLoad = $('#onLoad').val();
+            if (onLoad) {
+                $(window).on('load', function () {
+                    swal("Thank you for downloading!");
+                  })
+            }
             $('#myCategory').on('change', function () {
                 var myCategory = $(this).val();
                 $('#myLanguage').html("<option value=\"empty\">----------</option>\n");
@@ -169,10 +158,4 @@
         })
     </script>
 @endsection
-@section('my-header')
-    <style>
-        #card:hover {
-            background-color: navajowhite;
-        }
-    </style>
-@endsection
+

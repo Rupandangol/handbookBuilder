@@ -23,14 +23,22 @@
                 <div class="card-body border-top">
                     <ul class="list-unstyled bullet-check font-14">
                         <li><i style="color: green" class="fa fa-check"></i> Download as PDF template</li>
-                        <li><i style="color: green" class="fa fa-check"></i> Updated and current with HR Vetted Language
-                        </li>
+                        <li><i style="color: green" class="fa fa-check"></i> Updated and current with HR Vetted Language</li>
                         <li><i style="color: green" class="fa fa-check"></i> Daily updates on choose platforms</li>
-
+                        <br>
                         <li>Our Free Version :</li>
+                        <br>
                         @forelse($all as $value)
                             @if($value->price==='Free')
-                                <li><span class="label label-primary">{{ucfirst($value->category)}}-{{$value->language}}</span>
+                                <li style="font-size: 20px">
+                                    <a href="{{route('builderListSelect',$value->id)}}"><span class="label label-primary">{{ucfirst($value->category)}}-{{$value->language}}-{{$value->type}}</span></a>
+
+{{--                                    <form method="post" action="{{route('selectUserHandbook')}}">--}}
+{{--                                        {{csrf_field()}}--}}
+{{--                                        <input type="hidden" name="category" value="{{$value->category}}">--}}
+{{--                                        <input type="hidden" name="language" value="{{$value->language}}">--}}
+{{--                                        <button type="submit"><span class="label label-primary">{{ucfirst($value->category)}}-{{$value->language}}-{{$value->type}}</span></button>--}}
+{{--                                    </form>--}}
                                 </li>
                             @endif
                         @empty
@@ -39,7 +47,8 @@
 
 
                     </ul>
-                    <a href="#" class="btn btn-outline-secondary btn-block btn-lg">Get Started</a>
+                    <br><br>
+{{--                    <a href="#" class="btn btn-primary btn-block btn-lg">Get Started</a>--}}
                 </div>
             </div>
         </div>
@@ -55,21 +64,29 @@
                 <div class="card-body border-top">
                     <ul class="list-unstyled bullet-check font-14">
                         <li><i style="color: green" class="fa fa-check"></i> Download as PDF template</li>
-                        <li><i style="color: green" class="fa fa-check"></i> Updated and current with HR Vetted Language
-                        </li>
+                        <li><i style="color: green" class="fa fa-check"></i> Updated and current with HR Vetted Language</li>
                         <li><i style="color: green" class="fa fa-check"></i> Daily updates on choose platforms</li>
-
+                        <br>
                         <li>Our Standard Version :</li>
+                        <br>
                         @forelse($all as $value)
                             @if(is_numeric($value->price))
-                                <li><a href=""><span class="label label-success">{{ucfirst($value->category)}}
-                                            -{{$value->language}}</span></a></li>
+                                <li style="font-size: 20px">
+                                    <a href="{{route('builderListSelect',$value->id)}}"><span class="label label-success">{{ucfirst($value->category)}}-{{$value->language}}-{{$value->type}}</span></a>
+{{--                                    <form method="post" action="{{route('selectUserHandbook')}}">--}}
+{{--                                        {{csrf_field()}}--}}
+{{--                                        <input type="hidden" name="category" value="{{$value->category}}">--}}
+{{--                                        <input type="hidden" name="language" value="{{$value->language}}">--}}
+{{--                                        <button type="submit"><span class="label label-success">{{ucfirst($value->category)}}-{{$value->language}}-{{$value->type}}</span></button>--}}
+{{--                                    </form>--}}
+                                </li>
                             @endif
                         @empty
                             <li><i>Updating</i></li>
                         @endforelse
                     </ul>
-                    <a href="#" class="btn btn-secondary btn-block btn-lg">Get Started</a>
+                    <br><br>
+{{--                    <a href="#" class="btn btn-primary btn-block btn-lg">Get Started</a>--}}
                 </div>
             </div>
         </div>

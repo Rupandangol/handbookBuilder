@@ -28,9 +28,8 @@
             padding-bottom: 40px;
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-
-
 <body>
 
 
@@ -41,6 +40,11 @@
             <h3 class="mb-1">Registrations Form</h3>
             <p>Please enter your user information.</p>
         </div>
+        @foreach($errors->all() as $error)
+            <div>
+                <code>{{$error}}</code>
+            </div>
+        @endforeach
 
         <div class="card-body">
             <div class="form-group">
@@ -59,15 +63,19 @@
                 <input class="form-control form-control-lg" type="password" name="password_confirmation"
                        placeholder="Confirm">
             </div>
-            <div class="form-group pt-2">
-                <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
-            </div>
             <div class="form-group">
                 <label class="custom-control custom-checkbox">
-                    <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By creating an account, you agree the <a
-                                href="#">terms and conditions</a></span>
+                    <input id="termAndCondition" class="custom-control-input" value="1" type="checkbox"><span
+                        class="custom-control-label">By creating an account, you agree the <a
+                            href="{{route('termsAndCondition')}}" target="_blank">terms and conditions</a></span>
                 </label>
             </div>
+            <div class="form-group pt-2">
+                <button id="registerMyAccount" class="btn btn-block btn-primary" disabled
+                        title="Agree to terms and Condition" type="submit">Register My Account
+                </button>
+            </div>
+
         </div>
         <div class="card-footer bg-white">
             <p>Already member? <a href="{{route('loginUser')}}" class="text-second  ary">Login Here.</a></p>
@@ -75,6 +83,19 @@
     </div>
 </form>
 
+<script>
+    $(function () {
+        $("#termAndCondition").on('change', function () {
+            this.value = this.checked ? 1 : 0;
+            var myValue = $(this).val();
+            if (myValue === '1') {
+                $('#registerMyAccount').attr("disabled", false);
+            } else {
+                $('#registerMyAccount').attr("disabled", true);
+            }
+        })
+    })
+</script>
 </body>
 </html>
 

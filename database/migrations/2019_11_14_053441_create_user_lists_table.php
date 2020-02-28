@@ -19,6 +19,7 @@ class CreateUserListsTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('status')->nullable();
+            $table->string('reset_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

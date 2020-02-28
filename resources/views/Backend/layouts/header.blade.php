@@ -6,7 +6,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Handbook</title>
+    <title>Document Builder</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{URL::to('lib/bootstrap/css/bootstrap.min.css')}}">
     <link href="{{URL::to('lib/fonts/circular-std/style.css" rel="stylesheet')}}">

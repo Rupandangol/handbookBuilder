@@ -18,9 +18,10 @@ class CreateUserInfosTable extends Migration
             $table->string('companyName');
             $table->string('no_of_employee');
             $table->string('logo')->nullable();
-            $table->string('workShift');
-            $table->string('no_of_sickLeave');
-            $table->text('holiday');
+            $table->string('workTime')->nullable();
+            $table->string('workDays')->nullable();
+            $table->string('no_of_sickLeave')->nullable();
+            $table->string('ssfOrNot')->nullable();
             $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('user_lists')->onDelete('cascade')->onUpdate('cascade');

@@ -14,6 +14,8 @@ class UserHandbook extends Model
         'price',
         'deleteCode',
         'about',
+        'type',
+        'publicOrPrivate',
         'user_id'
     ];
 

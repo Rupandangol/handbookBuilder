@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use App\Model\Log;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class logController extends Controller
 {
     public function viewLog()
     {
-        $data['log'] = Log::orderBy('id', 'DESC')->get();
-        return view('Backend.pages.log.viewLog', $data, compact('search'));
+        if(Auth::guard('admin')->user()->privileges!='Lawyer'){
+            $viewLog_active='active';
+            $data['log'] = Log::orderBy('id', 'DESC')->get();
+            return view('Backend.pages.log.viewLog', $data,compact('viewLog_active'));
+        }
+        return redirect()->back();
+
     }
 
     public function searchLog(Request $request)
@@ -37,7 +43,7 @@ class logController extends Controller
                 $output[] = "<tr>
                     <td width=\"100px\">" . \Carbon\Carbon::parse($value->created_at)->setTimezone('Asia/Kathmandu')->format('h:i') . "</td>
                     <td>
-                        <b><span class=\"badge badge-primary\">" . ucfirst($value->admin_name) . "</span> </b><br>                        
+                        <b><span class=\"badge badge-primary\">" . ucfirst($value->admin_name) . "</span> </b><br>
                             ".$activity."&nbsp;&nbsp; Category &nbsp;&nbsp;". $value->category_name . "&nbsp;&nbsp;" . $value->activity . "
                     </td>
                     <td style=\"text-align: right\">" . \Carbon\Carbon::parse($value->created_at)->format('l, M d Y') . "</td>

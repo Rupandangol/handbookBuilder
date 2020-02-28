@@ -40,6 +40,7 @@
                             <div class="col-12 col-sm-8 col-lg-6">
                                 <select class="form-control" name="privileges" id="">
                                     <option @if(old('privileges')==='Super Admin') selected @endif>Super Admin</option>
+                                    <option @if(old('privileges')==='Lawyer') selected @endif>Lawyer</option>
                                     <option @if(old('privileges')==='Admin') selected @endif>Admin</option>
                                 </select>
                             </div>
@@ -93,6 +94,7 @@
                             <div class="col-12 col-sm-8 col-lg-6">
                                 <select class="form-control" name="privileges" id="">
                                     <option @if($admin->privileges==='Super Admin') selected @endif>Super Admin</option>
+                                    <option @if($admin->privileges==='Lawyer') selected @endif>Lawyer</option>
                                     <option @if($admin->privileges==='Admin') selected @endif>Admin</option>
                                 </select>
                             </div>

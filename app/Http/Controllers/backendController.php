@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Model\Admin;
+use App\Model\Frontend\ContactUs;
 use App\Model\Frontend\KhaltiPaymentLog;
+use App\Model\Frontend\LawyerAppointment;
+use App\Model\Frontend\UserHandbook;
 use App\Model\Frontend\UserList;
 use App\Model\Log;
 use App\Model\Project;
@@ -16,20 +19,26 @@ class backendController extends Controller
 {
     public function dashboard()
     {
+        $data['notification']=LawyerAppointment::orderBy('id','desc')->get();
         $data['project'] = Project::all();
         $data['admin'] = Admin::all();
         $data['user_list'] = UserList::all();
         $data['dashboard_active'] = 'active';
         $data['totalEarned'] = KhaltiPaymentLog::all()->sum('amount');
+        $data['TotalDownloads'] = UserHandbook::all();
+        $data['freeDownloads'] = UserHandbook::where('price', 'Free')->get();
+        $data['paidDownloads'] = UserHandbook::where('price', '!=', 'Free')->get();
         return view('Backend.pages.dashboard', $data);
-
     }
 
     public function addAdmin()
     {
-        $addAdmin_active = 'active';
-        $admin_active = 'active';
-        return view('Backend.pages.admin.addAdmin', compact('addAdmin_active', 'admin_active'));
+        if (Auth::guard('admin')->user()->privileges === 'Super Admin') {
+            $addAdmin_active = 'active';
+            $admin_active = 'active';
+            return view('Backend.pages.admin.addAdmin', compact('addAdmin_active', 'admin_active'));
+        }
+        return redirect()->back();
     }
 
     public function addAdminAction(Request $request)
@@ -51,13 +60,16 @@ class backendController extends Controller
         return redirect()->back();
     }
 
+
     public function manageAdmin()
     {
-        $admin = Admin::all();
-        $manageAdmin_active = 'active';
-        $admin_active = 'active';
-
-        return view('Backend.pages.admin.manageAdmin', compact('admin', 'manageAdmin_active', 'admin_active'));
+        if (Auth::guard('admin')->user()->privileges === 'Super Admin') {
+            $admin = Admin::all();
+            $manageAdmin_active = 'active';
+            $admin_active = 'active';
+            return view('Backend.pages.admin.manageAdmin', compact('admin', 'manageAdmin_active', 'admin_active'));
+        }
+        return redirect()->back();
     }
 
     public function deleteAdmin($id)
@@ -68,11 +80,16 @@ class backendController extends Controller
 
     public function updateAdmin($id)
     {
-        $admin = Admin::find($id);
-        return view('Backend.pages.admin.updateAdmin', compact('admin'));
+        if (Auth::guard('admin')->user()->privileges === 'Super Admin') {
+
+            $admin = Admin::find($id);
+            return view('Backend.pages.admin.updateAdmin', compact('admin'));
+        }
+        return redirect()->back();
     }
 
-    public function updateAdminAction(Request $request, $id)
+    public
+    function updateAdminAction(Request $request, $id)
     {
         $request->validate([
             'username' => "required|min:4|unique:admins,username,$id",
@@ -87,53 +104,61 @@ class backendController extends Controller
         $data['password'] = bcrypt($request->password);
         if (Admin::find($id)->update($data)) {
             return redirect(route('manageAdmin'))->with('success', 'Updated');
-
         }
         return redirect()->back()->with('fail', 'Failed');
 
     }
 
-    public function projectLists()
+    public
+    function projectLists()
     {
+        $projectList_active = 'active';
         $projectLists = Project::all();
-        return view('Backend.pages.project.projectLists', compact('projectLists'));
+        return view('Backend.pages.project.projectLists', compact('projectLists', 'projectList_active'));
     }
 
 
-    public function newProject(Request $request)
+    public
+    function newProject(Request $request)
     {
         $request->validate([
             'category' => 'required',
             'language' => 'required',
             'price' => 'required',
+            'type' => 'required',
+            'publicOrPrivate' => 'required'
         ]);
         $data['editContentNo'] = 1;
         $data['project_created_by'] = Auth::guard('admin')->user()->username;
         $data['projectStatus'] = 0;
+        $data['publicOrPrivate'] = $request->publicOrPrivate;
+        $data['type'] = $request->type;
         $data['category'] = $request->category;
         $data['language'] = $request->language;
-        $data['price'] = $request->price;
+        $data['price'] = ucfirst($request->price);
         $data['about'] = $request->about;
-        if ($newProject = Project::create($data)) {
+    if ($newProject = Project::create($data)) {
             $item['admin_name'] = $data['project_created_by'];
             $item['activity'] = 'Created';
             $item['category_name'] = $data['category'];
             Log::create($item);
-            return redirect()->back()->with('success', 'Created');
+            return redirect(route('projectLists'))->with('success', 'Created');
         }
         return redirect()->back()->with('fail', 'Failed');
     }
 
-    public function projectContent($id)
+    public
+    function projectContent($id)
     {
+        $projectList_active = 'active';
         $data['projectTitle'] = Project::find($id);
         $data['contentTitle'] = ProjectContentTitle::where(['project_id' => $id])->orderBy('order_by', 'asc')->get();
-        return view('Backend.pages.project.projectContent', $data);
+        return view('Backend.pages.project.projectContent', $data, compact('projectList_active'));
     }
 
-    public function projectContentTitle(Request $request)
+    public
+    function projectContentTitle(Request $request)
     {
-
         $request->validate([
             'contentTitle' => 'required'
         ]);
@@ -148,7 +173,8 @@ class backendController extends Controller
         return redirect()->back()->with('fail', 'failed');
     }
 
-    public function updateProjectContentTitle(Request $request)
+    public
+    function updateProjectContentTitle(Request $request)
     {
         $request->validate([
             'contentTitle' => 'required'
@@ -161,14 +187,18 @@ class backendController extends Controller
         return redirect()->back()->with('success', 'Updated');
     }
 
-    public function myContent($id)
+    public
+    function myContent($id)
     {
+        $projectList_active = 'active';
         $data['title'] = ProjectContentTitle::find($id);
         $data['myContent'] = ProjectContent::where(['title_id' => $id])->first();
-        return view('Backend.pages.project.projectContent.myContent', $data);
+        $data['allTitle'] = ProjectContentTitle::where('project_id', $data['title']->project_id)->orderBy('order_by', 'asc')->get();
+        return view('Backend.pages.project.projectContent.myContent', $data, compact('projectList_active'));
     }
 
-    public function myContentAction(Request $request)
+    public
+    function myContentAction(Request $request)
     {
         $request->validate([
             'myProjectContent' => 'required'
@@ -189,7 +219,8 @@ class backendController extends Controller
         }
     }
 
-    public function contentUp($id)
+    public
+    function contentUp($id)
     {
         $clickedValue = ProjectContentTitle::find($id);
         $clickedOrderNo = $clickedValue->order_by;
@@ -204,7 +235,8 @@ class backendController extends Controller
         return redirect()->back();
     }
 
-    public function contentDown($id)
+    public
+    function contentDown($id)
     {
         $clickedValue = ProjectContentTitle::find($id);
         $myCount = ProjectContentTitle::where(['project_id' => $clickedValue->project_id])->get()->count();
@@ -220,7 +252,8 @@ class backendController extends Controller
     }
 
 
-    public function contentDelete($id)
+    public
+    function contentDelete($id)
     {
         $clickedValue = ProjectContentTitle::find($id);
         $clickedOrderNo = $clickedValue->order_by;
@@ -236,7 +269,8 @@ class backendController extends Controller
     }
 
 
-    public function deleteProject(Request $request)
+    public
+    function deleteProject(Request $request)
     {
         $data = Project::find($request->project_id);
         $categoryName = $data->category;

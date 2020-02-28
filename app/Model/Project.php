@@ -12,7 +12,9 @@ class Project extends Model
         'projectStatus',
         'project_created_by',
         'language',
+        'publicOrPrivate',
         'category',
+        'type',
         'about',
         'price'
     ];

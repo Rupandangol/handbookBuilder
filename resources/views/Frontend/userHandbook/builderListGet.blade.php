@@ -8,6 +8,11 @@
 @section('lower-header')
     Get your Handbook Easily
 @endsection
+
+@section('my-header')
+
+@endsection
+
 @section('content')
     <script src="https://khalti.com/static/khalti-checkout.js"></script>
     <div class="row">
@@ -23,58 +28,65 @@
                     </div>
                     <div class="modals-default-notika">
                         <div class="modal-inner-pro">
-                            <h2>{{ucfirst($project->category)}}</h2>
-                            @if($project->about)
-                                <?php
-                                echo htmlspecialchars_decode($project->about)
-                                ?>
-                            @else
-                                <p><i>Basic Information</i></p>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <h3>{{ucfirst($project->category)}}</h3>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4><i>-{{$project->type}} <br>-{{$project->publicOrPrivate}}</i></h4><br>
+                                </div>
 
+                            </div>
+                            @if($project->about)
+                                <p style="font-size: 16px">
+                                    {{$project->about}}
+                                </p>
+                            @else
+                                <p style="font-size: 16px"><i>Basic Information</i></p>
                             @endif
                             <div class="row">
-                                <div class="col-md-6">- <span class="label label-primary">{{$project->language}}</span>
+                                <div class="col-md-9">- <span class="label label-primary">{{$project->language}}</span>
                                 </div>
-                                <div class="col-md-6"></div>
+                                @if($project->price==='Free')
+                                    <div class="col-md-3">- <span
+                                            class="label label-primary">{{$project->price}}</span></div>
+                                @else
+                                    <div class="col-md-3">- <span
+                                            class="label label-success">Rs {{$project->price}}</span></div>
+
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                @foreach($projectPrice as $value)
-                    @if($value->price==='Free'||$value->price==='free')
-                        <form method="post" action="{{route('createUserHandbook')}}">
-                            {{csrf_field()}}
-                            <input type="hidden" name="category" value="{{$project->category}}">
-                            <input type="hidden" name="language" value="{{$project->language}}">
-                            <input type="hidden" name="price" value="{{$value->price}}">
-                            <button class="btn btn-success btn-block">Get Free Version</button>
-                        </form>
-
-                    @endif
-                    @if(is_numeric($value->price))
-                        <button id="payment-button" value="{{$value->id}}" class="btn btn-success btn-block">Pay by
-                            Khalti
-                        </button>
-                    @endif
-                @endforeach
+                @if($project->price==='Free'||$project->price==='free')
+                    <a href="{{route('builderListCreate',$project->id)}}" class="btn btn-success btn-block">Get Free
+                        Version</a>
+                @endif
+                @if(is_numeric($project->price))
+                    <button id="payment-button" value="{{$project->id}}" class="btn btn-success btn-block">Pay by
+                        Khalti
+                    </button>
+                @endif
             </div>
         </div>
     </div>
+
+
 @endsection
 @section('my-footer')
     <script>
-                @forelse($projectPrice as $value)
-                @if(is_numeric($value->price))
+            @if(is_numeric($project->price))
 
-        var price = parseInt("{!! $value->price*100 !!}", 10);
+        var price = parseInt("{!! $project->price*100 !!}", 10);
         var config = {
             // replace the publicKey with yours
             "publicKey": "test_public_key_df0fa68971b142f69b6cf6e3b086749f",
-            "productIdentity": "{!! $value->id !!}",
-            "productName": "{!! $value->category.'-'. $value->language!!}",
-            "productUrl": "http://handbook.com/handbookList/selectUserHandbook",
+            "productIdentity": "{!! $project->id !!}",
+            "productName": "{!! $project->category.'-'. $project->language.'_'.$project->publicOrPrivate!!}",
+            "productUrl": "http://handbook.com/handbookList/builderListSelect",
             "eventHandler": {
                 onSuccess(payload) {
                     // hit merchant api for initiating verfication
@@ -86,22 +98,21 @@
                             trans_token: payload.token
                         },
                         success: function (res) {
-                            var base_url = window.location.origin;
                             $.ajax({
-                                url: base_url + '/handbookList/api/createUserHandbook',
+                                url: "{!! route('builderListCreateApi') !!}",
                                 data: {
-                                    'category': "{!! $value->category !!}",
-                                    'language': "{!! $value->language !!}",
-                                    'price': "{!! $value->price !!}"
+                                    'id': "{!! $project->id !!}",
                                 },
                                 cache: false,
                                 success: function (data) {
-                                    window.location.replace("{!! route('handbookList') !!}");
+                                    console.log(data);
+                                    swal('Thank you for downloading')
+                                    setTimeout(function () {
+                                        window.location.replace("{!! route('handbookList') !!}");
+                                    },1500);
 
                                 }
                             });
-
-
                             console.log("transaction succeed");
                         },
                         error: function (error) {
@@ -125,7 +136,7 @@
                         cache: false,
                         success: function (data) {
                             console.log(data);
-                            {{--window.location.replace("{!! route('handbookList') !!}");--}}
+                            {{--                            window.location.replace("{!! route('handbookList') !!}");--}}
 
                         }
                     });
@@ -146,10 +157,9 @@
             checkout.show({amount: price});
         };
         @endif
-        @empty
-        @endforelse
-    </script>
 
+
+    </script>
 
 
 @endsection

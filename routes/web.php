@@ -16,9 +16,13 @@
 Route::get('/AdminLogin', 'loginController@loginPage')->name('loginPage');
 Route::post('/AdminLogin', 'loginController@loginPageAction');
 Route::get('/AdminLogout', 'loginController@logout')->name('admin-logout');
+Route::get('/AdminForgotPassword', 'loginController@forgotPassword')->name('forgotPassword');
+Route::post('/AdminForgotPassword', 'loginController@forgotPasswordAction');
 
+Route::get('/reset/{token?}', 'loginController@resetPassword')->name('resetPassword');
+Route::post('/reset/{token?}', 'loginController@resetPasswordAction');
 
-Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () {
+Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin','ContactReviewCheck'], function () {
 
     Route::get('/', 'backendController@dashboard')->name('dashboard');
 //    admin
@@ -35,9 +39,25 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () 
     Route::get('/userList', 'userBackendController@userList')->name('myUserList');
     Route::get('/api/userStatus', 'ajaxController@userStatus')->name('userStatus');
 
+
     Route::get('/userList/userInfo/{id}', 'userBackendController@userInfo')->name('userInfo-backend');
     Route::get('/userList/userProject/{id}', 'userBackendController@userProject')->name('userProject');
     Route::get('/api/deleteCodeChange', 'userBackendController@deleteCodeChange')->name('deleteCodeChange');
+
+    Route::get('/userList/userProjectContent/{id}', 'userBackendController@userProjectContent')->name('userProjectContent');
+    Route::post('/userList/userProjectContent/{id}', 'userBackendController@userProjectContentSave');
+
+    Route::get('/userList/api/updateProjectContentTitle', 'userBackendController@updateUserContentTitle')->name('updateUserContentTitle');
+
+
+//    contact Review
+    Route::get('/contactReview', 'contactController@contactReview')->name('contactReview');
+    Route::get('/contactViewed', 'contactController@contactViewed')->name('contactViewed');
+
+//    Lawyer Profile
+    Route::get('/LawyerProfileView', 'lawyerController@lawyerProfileView')->name('lawyerProfileView')->middleware('checkLawyerProfile');
+    Route::get('/LawyerProfile', 'lawyerController@lawyerProfile')->name('lawyerProfile');
+    Route::post('/LawyerProfile', 'lawyerController@lawyerProfileAction');
 
 
 //    Project
@@ -47,6 +67,11 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () 
     Route::post('/projectLists/deleteProject', 'backendController@deleteProject')->name('deleteProject');
 
     Route::get('/api/updateProject', 'ajaxController@updateProject')->name('updateProject');
+    Route::get('/api/updatePrice', 'ajaxController@updatePrice')->name('updatePrice');
+    Route::get('/api/updateAbout', 'ajaxController@updateAbout')->name('updateAbout');
+    Route::get('/api/updateLanguage', 'ajaxController@updateLanguage')->name('updateLanguage');
+    Route::get('/api/updateType', 'ajaxController@updateType')->name('updateType');
+
     Route::get('/api/projectStatus', 'ajaxController@projectStatus')->name('projectStatus');
 
 //    content
@@ -57,6 +82,8 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () 
 
     Route::get('/myContent/{id}', 'backendController@myContent')->name('myContent');
     Route::post('/myContent/{id}', 'backendController@myContentAction');
+
+
 
 //    update
     Route::post('/projectContentTitle/update', 'backendController@updateProjectContentTitle')->name('updateProjectContentTitle');
@@ -73,6 +100,12 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () 
     Route::get('/downloadWord/{id}', 'wordController@downloadWord')->name('downloadWord');
 
 
+//    FAQ
+    Route::get('/FAQView','FAQController@FAQView')->name('FAQView');
+    Route::post('/FAQView','FAQController@FAQViewAddAction');
+    Route::get('/FAQDelete/{id}','FAQController@FAQDelete')->name('FAQDelete');
+
+
 //    LOG
     Route::get('/Log', 'logController@viewLog')->name('viewLog');
     Route::get('/api/searchLog', 'logController@searchLog')->name('searchLog');
@@ -83,10 +116,19 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin'], function () 
 
 
 //Frontend
+Route::get('/', 'frontendController@mainPage')->name('mainPage')->middleware('MainPageAfterLogin');
 
 Route::get('/loginUser', 'userLoginController@userLogin')->name('loginUser');
 Route::post('/loginUser', 'userLoginController@userLoginAction');
 Route::get('/logoutUser', 'userLoginController@userLogout')->name('user-logout');
+//Reset Password
+Route::get('/userForgotPassword', 'userLoginController@userForgotPassword')->name('userForgotPassword');
+Route::post('/userForgotPassword', 'userLoginController@userForgotPasswordAction');
+Route::get('/userReset/{token?}', 'userLoginController@userReset')->name('userReset');
+Route::post('/userReset/{token?}', 'userLoginController@userResetAction');
+
+
+Route::get('/termsAndCondition', 'frontendController@termsAndCondition')->name('termsAndCondition');
 
 Route::get('/register', 'userLoginController@userRegister')->name('registerUser');
 Route::post('/register', 'userLoginController@userRegisterAction');
@@ -104,10 +146,25 @@ Route::group(['middleware' => 'auth:userList'], function () {
         Route::get('/api/createUserHandbook', 'userHandbookController@apiCreateUserHandbook')->name('api_createUserHandbook');
         Route::get('/api/khaltiLog', 'khaltiController@khaltiLog')->name('khaltiLog');
 
+        Route::get('/builderList', 'userHandbookController@builderList')->name('builderList');
+        Route::get('/builderListSelect/{id}', 'userHandbookController@builderListSelect')->name('builderListSelect');
+        Route::get('/builderListCreate/{id}', 'userHandbookController@builderListCreate')->name('builderListCreate');
+        Route::get('/builderListCreateApi', 'userHandbookController@builderListCreateApi')->name('builderListCreateApi');
+
+        Route::get('/myList', 'userHandbookController@myList')->name('myList');
+
+
 //        handbook
         Route::get('/titleContents/{id}', 'userHandbookController@titleContents')->name('handbookContentTitle');
         Route::get('/contents/{id}', 'userHandbookController@contents')->name('handbookContent');
         Route::post('/contents/{id}', 'userHandbookController@contentsUpdate');
+
+//        getVerifiedByLawyer
+//        Route::get('/verification/lawyer={lawyer_id}/handbook={userHandbook_id}','lawyerController@lawyerVerification')->name('lawyerVerification');
+        Route::get('/verification/lawyer={lawyer_id}/handbook={userHandbook_id}', 'lawyerController@lawyerVerification')->name('lawyerVerification');
+
+        Route::post('/lawyerBookAppointment', 'lawyerController@lawyerBookAppointment')->name('lawyerBookAppointment');
+
 
 //        pdf User
         Route::post('/userPdfView/', 'userPdfController@userPdfView')->name('userPdfView');
@@ -115,10 +172,26 @@ Route::group(['middleware' => 'auth:userList'], function () {
 
         Route::get('/api/includeCode/', 'userHandbookController@includeCode')->name('include');
 
+
     });
     Route::get('/priceList', 'userHandbookController@priceList')->name('priceList');
 
+//    Profile User
+    Route::get('/userProfile', 'userHandbookController@userProfile')->name('userProfile');
+    Route::post('/userProfile', 'userHandbookController@userProfileAction');
+
+
+//    contact
+    Route::get('/contact', 'contactController@contact')->name('contact');
+    Route::post('/contact', 'contactController@contactAction');
+
+
+//    FAQ
+    Route::get('/FAQ','FAQController@FAQ')->name('FAQ');
+
+
 });
+Route::get('/contactMainPage', 'contactController@contactMainPage')->name('contactMainPage');
 
 
 Route::get('testKhalti', 'khaltiController@viewKhalti')->name('viewKhalti');

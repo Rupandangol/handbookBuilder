@@ -13,6 +13,7 @@ class Admin extends Authenticatable
         'email',
         'privileges',
         'password',
-        'status'
+        'status',
+        'reset_token'
     ];
 }

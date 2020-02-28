@@ -15,7 +15,7 @@ class userPdfController extends Controller
         $data = UserHandbookContentTitle::where(['userHandbook_id' => $request->handbook_id, 'include' => '1'])->orderBy('order_by', 'asc')->get();
         $userInfo=UserInfo::where('user_id',Auth::guard('userList')->user()->id)->first();
 //        return view('Backend.pages.project.pdf',compact('data'));
-        $pdf = PDF::loadView('Frontend.userHandbook.userPdf', compact('data', 'cktext','userInfo'));
+        $pdf = PDF::loadView('Frontend.userHandbook.userPdf', compact('data','userInfo'));
         return $pdf->stream();
     }
 
@@ -24,7 +24,7 @@ class userPdfController extends Controller
         $data = UserHandbookContentTitle::where(['userHandbook_id' => $request->handbook_id, 'include' => '1'])->orderBy('order_by', 'asc')->get();
         $userInfo=UserInfo::where('user_id',Auth::guard('userList')->user()->id)->first();
 //        return view('Backend.pages.project.pdf',compact('data'));
-        $pdf = PDF::loadView('Frontend.userHandbook.userPdf', compact('data', 'cktext','userInfo'));
+        $pdf = PDF::loadView('Frontend.userHandbook.userPdf', compact('data','userInfo'));
         return $pdf->download();
     }
 }

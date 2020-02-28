@@ -42,6 +42,10 @@
 <script type="" src="{{URL::to('frontendLib/js/plugins.js')}}"></script>
 
 <script type="" src="{{URL::to('frontendLib/js/main.js')}}"></script>
+
+<script src="{{URL::to('/frontendLib/js/dialog/dialog-active.js')}}"></script>
+<script src="{{URL::to('/frontendLib/js/dialog/sweetalert2.min.js')}}"></script>
+
 @yield('my-footer')
 
 </body>

@@ -11,9 +11,10 @@ class UserInfo extends Model
         'companyName',
         'no_of_employee',
         'logo',
-        'workShift',
+        'workTime',
+        'workDays',
+        'ssfOrNot',
         'no_of_sickLeave',
-        'holiday',
         'user_id'
     ];
 }
