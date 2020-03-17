@@ -22,7 +22,7 @@ Route::post('/AdminForgotPassword', 'loginController@forgotPasswordAction');
 Route::get('/reset/{token?}', 'loginController@resetPassword')->name('resetPassword');
 Route::post('/reset/{token?}', 'loginController@resetPasswordAction');
 
-Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin','ContactReviewCheck'], function () {
+Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin', 'ContactReviewCheck'], function () {
 
     Route::get('/', 'backendController@dashboard')->name('dashboard');
 //    admin
@@ -84,7 +84,6 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin','ContactReview
     Route::post('/myContent/{id}', 'backendController@myContentAction');
 
 
-
 //    update
     Route::post('/projectContentTitle/update', 'backendController@updateProjectContentTitle')->name('updateProjectContentTitle');
 //    edit
@@ -101,9 +100,17 @@ Route::group(['prefix' => '@admin@', 'middleware' => 'auth:admin','ContactReview
 
 
 //    FAQ
-    Route::get('/FAQView','FAQController@FAQView')->name('FAQView');
-    Route::post('/FAQView','FAQController@FAQViewAddAction');
-    Route::get('/FAQDelete/{id}','FAQController@FAQDelete')->name('FAQDelete');
+    Route::get('/FAQView', 'FAQController@FAQView')->name('FAQView');
+    Route::post('/FAQView', 'FAQController@FAQViewAddAction');
+    Route::get('/FAQDelete/{id}', 'FAQController@FAQDelete')->name('FAQDelete');
+
+//    Resources
+    Route::get('/resourceAdd', 'resourceController@resourceAdd')->name('resourceAdd');
+    Route::post('/resourceAdd', 'resourceController@resourceAddAction');
+    Route::get('/resourceManage', 'resourceController@resourceManage')->name('resourceManage');
+    Route::get('/resourceUpdate/{id}', 'resourceController@resourceUpdate')->name('resourceUpdate');
+    Route::post('/resourceUpdate/{id}', 'resourceController@resourceUpdateAction');
+    Route::get('/resourceDelete/{id}', 'resourceController@resourceDelete')->name('resourceDelete');
 
 
 //    LOG
@@ -187,8 +194,12 @@ Route::group(['middleware' => 'auth:userList'], function () {
 
 
 //    FAQ
-    Route::get('/FAQ','FAQController@FAQ')->name('FAQ');
+    Route::get('/FAQ', 'FAQController@FAQ')->name('FAQ');
 
+//    Resources
+
+    Route::get('/resources', 'resourceController@frontendResourceList')->name('resourceList');
+    Route::get('/resourcesDetail/{id}', 'resourceController@frontendResourceDetail')->name('resourceDetail');
 
 });
 Route::get('/contactMainPage', 'contactController@contactMainPage')->name('contactMainPage');
@@ -196,6 +207,33 @@ Route::get('/contactMainPage', 'contactController@contactMainPage')->name('conta
 
 Route::get('testKhalti', 'khaltiController@viewKhalti')->name('viewKhalti');
 Route::get('/payment/verification', 'khaltiController@verification')->name('paymentVerification');
+
+
+Route::get('/checkout/payment/esewa', [
+    'name' => 'eSewa Checkout Payment',
+    'as' => 'checkout.payment.esewa',
+    'uses' => 'EsewaController@checkout',
+]);
+
+Route::post('/checkout/payment/{order}/esewa/process', [
+    'name' => 'eSewa Checkout Payment',
+    'as' => 'checkout.payment.esewa.process',
+    'uses' => 'EsewaController@payment',
+]);
+
+Route::get('/checkout/payment/{order}/esewa/completed', [
+    'name' => 'eSewa Payment Completed',
+    'as' => 'checkout.payment.esewa.completed',
+    'uses' => 'EsewaController@completed',
+]);
+
+Route::get('/checkout/payment/{order}/failed', [
+    'name' => 'eSewa Payment Failed',
+    'as' => 'checkout.payment.esewa.failed',
+    'uses' => 'EsewaController@failed',
+]);
+Route::get('/testEsewa', 'esewaController@testEsewa')->name('testEsewa');
+
 
 
 

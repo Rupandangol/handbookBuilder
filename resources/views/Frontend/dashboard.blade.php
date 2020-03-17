@@ -3,10 +3,14 @@
     <i class="notika-icon notika-app"></i>
 @endsection
 @section('upper-header')
-    Dashboard
+    Create your handbook
 @endsection
 @section('lower-header')
-    Create your handbook
+    Dashboard
+
+@endsection
+@section('button-header')
+{{--    <a id="easyCreate"  href="{{route('builderList')}}" title="Easy Create from builder List" class="btn btn-primary">Easy Create</a>--}}
 @endsection
 
 @section('my-header')
@@ -14,7 +18,9 @@
         .myBlock {
             background-color: #ecf0f1;
         }
-
+        #easyCreate:hover{
+            box-shadow: 0 0 15px #3498db;
+        }
         .infoNumber {
 
             font-family: 'Monoton', cursive;
@@ -100,58 +106,50 @@
         <br><br><br><br>
 
         <h1 style="text-align: center">Why Document Builder ? </h1><br><br>
-        <p style="font-size: 20px">Preparing Employee Handbook, Employment Contracts and other HR document can
-            be a little overwhelming, specially when there is no legal help to proof read the policies. With
-            Document Builder, you can prepare all these documents that are prepared by the registered lawyer
-            of Nepal who specializes in Labor policies. You will save, time, money and access to the most
-            updated policies to slide your way into professional Human Resource Management</p><br><br>
+        <p style="font-size: 20px">
+            The Document Builder is a web-based system, you can revise, edit and customize your
+            Employee Handbook, standard employment contract, offer letter, promotion letter,
+            termination letter from any computer with a browser and internet facility. Once you
+            finalize the document you can preview and download the document for your use.</p><br><h3>Advantages</h3><br>
         <div class="row">
             <div class="col-md-4">
                 <div class="contact-inner"
-                     style="height: 320px;  border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
+                     style="height: 300px; margin-top: 10px; border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
                     <div class="contact-hd widget-ctn-hd"><br>
                         <p></p>
                         <h2 style="text-align: center"><i style="color: cornflowerblue; font-size: 30px"
-                                                          class="fa fa-user-circle"></i><br>
-                            <br>What to expect?</h2><br>
-                        <p>
-                            The Document Builder is a web-based system, you can revise, edit and customize your
-                            Employee Handbook, standard employment contract, offer letter, promotion letter,
-                            termination letter from any computer with a browser and internet facility. Once you
-                            finalize the document you can preview and download the document for your use.
+                                                          class="fa fa-compass"></i><br>
+                            <br>Stay Compliant</h2><br>
+                        <p >
+                            Easy navigation and edit option with one-time company name and logo input.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="contact-inner"
-                     style="height: 320px;  border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
+                     style="height: 300px; margin-top: 10px; border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
                     <div class="contact-hd widget-ctn-hd"><br>
                         <p></p>
                         <h2 style="text-align: center"><i style="color: cornflowerblue; font-size: 30px"
-                                                          class="fa fa-user-circle"></i><br>
-                            <br>Advantages</h2><br>
+                                                          class="fa fa-money-bill-alt"></i><br>
+                            <br>Customizable and Affordable</h2><br>
                         <p>
-                            - Easy navigation and edit option with one-time company name and logo input. <br>
-                            - Stay compliant with updated policies regularly updated and revised by lawyers
-                            directly in your handbook. <br>
-                            - Customer Support to help you address any issues during your HR document revision.
+                            Stay compliant with updated policies regularly updated and revised by lawyers directly in your handbook.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="contact-inner"
-                     style="height: 320px;  border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
+                     style="height: 300px; margin-top: 10px; border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
                     <div class="contact-hd widget-ctn-hd"><br>
                         <p></p>
                         <h2 style="text-align: center"><i style="color: cornflowerblue; font-size: 30px"
                                                           class="fa fa-user-circle"></i><br>
-                            <br>Heading</h2><br>
+                            <br>Online Customer Support</h2><br>
                         <p>
-                            Fusce eget dolor id justo luctus commodo vel pharetra nisi. Donec velit libero
-                            Fusce eget dolor id justo luctus commodo vel pharetra nisi. Donec velit libero
-                            Fusce eget dolor id justo luctus commodo vel pharetra nisi. Donec velit libero
+                            Customer Support to help you address any issues during your HR document revision.
                         </p>
                     </div>
                 </div>
@@ -167,7 +165,7 @@
         <br><br>
         <h1 style="text-align: center">Easy way to create your Handbook</h1><br><br>
         <p style="font-size: 16px">Get an updated, high-quality employee handbook for your company.
-            </p><br><br>
+        </p><br><br>
 
         <div class="row">
             <div class="col-md-3" style="text-align: center">

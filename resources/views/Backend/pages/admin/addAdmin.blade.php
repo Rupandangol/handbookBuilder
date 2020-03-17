@@ -3,20 +3,17 @@
 @section('heading')
     Add Admin
 @endsection
+@section('my-header')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endsection
+
 @section('content')
 
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="card">
             <h5 class="card-header">New Admin</h5>
-            @if($errors->all())
-                <div class="alert alert-danger">
-                    @foreach($errors->all() as $error)
-                        <span>
-                        *{{$error}}<br>
-                        </span>
-                    @endforeach
-                </div>
-            @endif
+            @include('sessionMsg.validationError')
+
             <div class="card-body">
                 <form id="validationform" data-parsley-validate="" action="{{route('addAdmin')}}" method="post"
                       novalidate="">
@@ -49,7 +46,8 @@
                         <div class="form-group row">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Password</label>
                             <div class="col-12 col-sm-8 col-lg-6">
-                                <input name="password" type="password" id="myPassword" placeholder="" class="form-control">
+                                <input name="password" type="password" id="myPassword" placeholder=""
+                                       class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -65,7 +63,14 @@
                         <div class="form-group row">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Confirm Password</label>
                             <div class="col-12 col-sm-8 col-lg-6">
-                                <input id="myConfirmPassword" name="password_confirmation" type="password" placeholder="" class="form-control">
+                                <input id="myConfirmPassword" name="password_confirmation" type="password"
+                                       placeholder="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-12 col-sm-3 col-form-label text-sm-right">Recaptcha</label>
+                            <div class="col-12 col-sm-8 col-lg-6">
+                                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
                             </div>
                         </div>
                         <div class="form-group row text-right">
@@ -117,7 +122,14 @@
                         <div class="form-group row">
                             <label class="col-12 col-sm-3 col-form-label text-sm-right">Confirm Password</label>
                             <div class="col-12 col-sm-8 col-lg-6">
-                                <input id="myConfirmPassword" name="password_confirmation" type="password" placeholder="" class="form-control">
+                                <input id="myConfirmPassword" name="password_confirmation" type="password"
+                                       placeholder="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-12 col-sm-3 col-form-label text-sm-right">Recaptcha</label>
+                            <div class="col-12 col-sm-8 col-lg-6">
+                                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}"></div>
                             </div>
                         </div>
                         <div class="form-group row text-right">
@@ -157,7 +169,7 @@
                         myWidth = myWidth + 20;
                         pStrength.prop('style', 'width:' + myWidth + '%');
                     }
-                    if (count>=10) {
+                    if (count >= 10) {
                         myWidth = myWidth + 20;
                         pStrength.prop('style', 'width:' + myWidth + '%');
                     }
@@ -166,26 +178,27 @@
                     pStrength.prop('style', 'width:0%');
 
                 }
-                if(myWidth===50){
-                    pStrength.prop('class','progress-bar bg-warning');
+                if (myWidth === 50) {
+                    pStrength.prop('class', 'progress-bar bg-warning');
                 }
-                if(myWidth>=70){
-                    pStrength.prop('class','progress-bar bg-success');
+                if (myWidth >= 70) {
+                    pStrength.prop('class', 'progress-bar bg-success');
                 }
 
             });
-            $('#myConfirmPassword').on('keyup',function () {
-                var value=$(this).val();
-                var myPassValue=$('#myPassword').val();
-                if(value){
-                    if(value===myPassValue){
-                        $(this).prop('class','form-control is-valid');
-                    }else{
-                        $(this).prop('class','form-control is-invalid');
+            $('#myConfirmPassword').on('keyup', function () {
+                var value = $(this).val();
+                var myPassValue = $('#myPassword').val();
+                if (value) {
+                    if (value === myPassValue) {
+                        $(this).prop('class', 'form-control is-valid');
+                    } else {
+                        $(this).prop('class', 'form-control is-invalid');
                     }
-                }else{
-                    $(this).prop('class','form-control');
-                };
+                } else {
+                    $(this).prop('class', 'form-control');
+                }
+                ;
 
             });
         })

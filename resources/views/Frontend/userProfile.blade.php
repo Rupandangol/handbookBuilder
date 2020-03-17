@@ -34,11 +34,17 @@
             <input type="email" name="email" class="form-control" value="{{$userListData->email}}"
                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
+
+        <div class="form-group">
+            <label for="">Mobile Number</label>
+            <input type="number" name="mobileNo" class="form-control" placeholder="Mobile Number" value="{{$userListData->mobileNo}}">
+        </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Current Password</label>
             <input type="password" name="currentPassword" class="form-control" id="currentPassword"
                    placeholder="Current Password">
         </div>
+
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input type="password" name="password" class="form-control" id="userPassword"

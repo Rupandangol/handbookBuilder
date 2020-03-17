@@ -2,84 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8426027-6246-4552-946f-f7d7b26898b1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/file.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/file2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/handbook.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/laptop.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/laptop2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/laptopBackground.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/openBook.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/defaultImage/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/defaultImage/2.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/logo/logo3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/logo/logo4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/logo/logo5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Backend/pages/FAQ/FAQView.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Backend/pages/contactReview/contactReview.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/FAQ/FAQ.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/contact/contact.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/mail/forgotPasswordMail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/mail/lawyerMail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/mainPage.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/termsAndCondition.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/userLogin/userForgotPassword.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/userLogin/userResetLinkSent.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/userLogin/userResetPassword.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Esewa.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/123.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/guy.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/handLaptop.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/backgroundImage/report.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/defaultImage/no-image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/defaultImage/noimage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Backend/pages/resources/resourceAdd.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Backend/pages/resources/resourceManage.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Backend/pages/resources/resourceUpdate.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/Resources/frontendResourceDetail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Frontend/Resources/frontendResourcesList.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/esewa/testEsewa.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/sessionMsg/sessionMsg.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/sessionMsg/validationError.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/handbook.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/handbook.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ajaxController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ajaxController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/backendController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/backendController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/frontendController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/frontendController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/khaltiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/khaltiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/logController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/logController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/loginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/loginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/pdfController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/pdfController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/userBackendController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/userBackendController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/userHandbookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/userHandbookController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/userLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/userLoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/userPdfController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/userPdfController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Frontend/UserHandbook.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Frontend/UserHandbook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Frontend/UserInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Frontend/UserInfo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Model/Frontend/UserList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Frontend/UserList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_15_054045_create_admins_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_15_054045_create_admins_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_16_053000_create_projects_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_16_053000_create_projects_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_16_055353_create_project_content_titles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_16_055353_create_project_content_titles_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_14_053441_create_user_lists_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_14_053441_create_user_lists_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_26_111357_create_user_infos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_26_111357_create_user_infos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_29_092253_create_user_handbooks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_29_092253_create_user_handbooks_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/projectContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/projectContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/unisharp/ckeditor/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/unisharp/ckeditor/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/unisharp/ckeditor/contents.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/unisharp/ckeditor/contents.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Backend/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Backend/login/loginPage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/login/loginPage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_29_092524_create_user_handbook_content_titles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_29_092524_create_user_handbook_content_titles_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Backend/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/FAQ/FAQView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/FAQ/FAQView.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/LawyerProfile/lawyerProfile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/LawyerProfile/lawyerProfile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/LawyerProfile/lawyerProfileView.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/LawyerProfile/lawyerProfileView.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/admin/addAdmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/admin/addAdmin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/admin/updateAdmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/admin/updateAdmin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/project/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/project/pdf.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/project/projectContent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/project/projectContent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/log/khalti-log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/log/khalti-log.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/project/projectContent/myContent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/project/projectContent/myContent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/project/projectLists.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/project/projectLists.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/user/userProject/userProject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/user/userProject/userProject.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/user/userProject/userProjectContent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/user/userProject/userProjectContent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Backend/pages/user/userList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Backend/pages/user/userList.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/FAQ/FAQ.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/FAQ/FAQ.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/contact/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/contact/contact.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Frontend/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/layouts/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Frontend/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/mainPage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/mainPage.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Frontend/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/priceList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/priceList.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/HandbookContentTitle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/HandbookContentTitle.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/getUserHandbook.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/handbookContent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/handbookContent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/builderList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/builderList.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/builderListGet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/builderListGet.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/handbookList.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/handbookList.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/userPdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userHandbook/userPdf.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userInfo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userInfo.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userLogin/userLogin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userLogin/userLogin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userLogin/userRegister.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userLogin/userRegister.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Frontend/userProfile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Frontend/userProfile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -215,6 +189,20 @@
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/sudiptpa/omnipay-esewa" />
+      <path value="$PROJECT_DIR$/vendor/php-http/promise" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message" />
+      <path value="$PROJECT_DIR$/vendor/php-http/httplug" />
+      <path value="$PROJECT_DIR$/vendor/php-http/guzzle6-adapter" />
+      <path value="$PROJECT_DIR$/vendor/php-http/discovery" />
+      <path value="$PROJECT_DIR$/vendor/clue/stream-filter" />
+      <path value="$PROJECT_DIR$/vendor/moneyphp/money" />
+      <path value="$PROJECT_DIR$/vendor/omnipay/common" />
+      <path value="$PROJECT_DIR$/vendor/google/recaptcha" />
     </include_path>
   </component>
   <component name="ProjectId" id="1VKxgYcAj9w638hort8WiRrKMTA" />
@@ -364,24 +352,24 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="khaltilo&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/log/khalti-log.blade.php&#10;handb&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/userHandbook/handbookList.blade.php&#10;web&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/routes/web.php&#10;controller&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/backendController.php&#10;DA&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/dashboard.blade.php&#10;DASHBOAR&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/dashboard.blade.php&#10;MASTER&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/master.blade.php&#10;pdf&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/project/pdf.blade.php&#10;myContent&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/project/projectContent/myContent.blade.php&#10;myCon&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/project/projectContent/myContent.blade.php&#10;handbooklist&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/userHandbook/handbookList.blade.php&#10;user&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userHandbookController.php&#10;pric&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/priceList.blade.php&#10;project&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/project/projectLists.blade.php&#10;khalticont&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/khaltiController.php&#10;we&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/routes/web.php&#10;master&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/master.blade.php&#10;userHandb&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/userHandbook/getUserHandbook.blade.php&#10;das&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/dashboard.blade.php&#10;dashbo&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/dashboard.blade.php&#10;khalti&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/khaltiController.php&#10;khal&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/khaltiController.php&#10;userha&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userHandbookController.php&#10;ewb&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/vendor/nikic/php-parser/test/code/parser/expr/assignNewByRef.test&#10;userH&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userHandbookController.php&#10;backend&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/backendController.php&#10;backendController&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/backendController.php&#10;handbookli&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/userHandbook/handbookList.blade.php&#10;web.php&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/routes/web.php&#10;userhan&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userHandbookController.php&#10;userhandbo&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userHandbookController.php&#10;userinfo&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/user/userInfo.blade.php&#10;userif&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/vendor/dompdf/dompdf/lib/fonts/DejaVuSerif-Bold.ttf&#10;userinfofor&#9;null&#9;null&#10;projectCont&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/project/projectContent.blade.php&#10;userHa&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userHandbookController.php&#10;handbooklist.blade.&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/userHandbook/handbookList.blade.php&#10;khalticon&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/khaltiController.php&#10;handbookcont&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userHandbookController.php&#10;header&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/layouts/header.blade.php&#10;dashboard&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/dashboard.blade.php&#10;handboo&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/userHandbook/handbookList.blade.php&#10;khalticontroller&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/khaltiController.php&#10;head&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Frontend/layouts/header.blade.php&#10;bac&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userBackendController.php&#10;config/app.&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/config/app.php&#10;userInfo&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/user/userInfo.blade.php&#10;userhandbookcontroller&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userHandbookController.php&#10;log&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/resources/views/Backend/pages/log/viewLog.blade.php&#10;userhandb&#9;FILE&#9;file:///Applications/MAMP/htdocs/handbook/app/Http/Controllers/userHandbookController.php" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/frontendLib/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="application.passwordSafe" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\handbookBuilder\public\uploads\backgroundImage" />
+      <recent name="C:\xampp\htdocs\handbookBuilder\public\uploads\defaultImage" />
+      <recent name="C:\xampp\htdocs\handbookBuilder\public\uploads" />
+      <recent name="C:\xampp\htdocs\handbookBuilder\public\uploads\ResourceImage" />
+      <recent name="C:\xampp\htdocs\handbookBuilder\app\Model" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\handbookBuilder\resources\views\Backend\pages\resources" />
       <recent name="C:\xampp\htdocs\handbookBuilder\public\frontendLib\css" />
       <recent name="C:\xampp\htdocs\handbookBuilder\public\frontendLib\js" />
       <recent name="C:\xampp\htdocs\handbookBuilder\resources\views\Frontend\userHandbook" />
       <recent name="C:\xampp\htdocs\handbookBuilder\public\uploads\defaultImage" />
-      <recent name="C:\xampp\htdocs\handbookBuilder\public\vendor\unisharp\ckeditor\fonts\preeti" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\handbookBuilder\app\Model" />
-      <recent name="C:\xampp\htdocs\handbookBuilder\public\uploads\logo" />
-      <recent name="C:\xampp\htdocs\handbookBuilder\public\uploads\backgroundImage" />
-      <recent name="C:\xampp\htdocs\handbookBuilder\app\Model\Frontend" />
-      <recent name="C:\xampp\htdocs\handbookBuilder\resources\views\Backend" />
     </key>
   </component>
   <component name="RunManager">
@@ -601,7 +589,27 @@
       <workItem from="1582693502402" duration="16438000" />
       <workItem from="1582730824864" duration="780000" />
       <workItem from="1582781792983" duration="17568000" />
-      <workItem from="1582867131432" duration="10184000" />
+      <workItem from="1582867131432" duration="12061000" />
+      <workItem from="1582955076840" duration="2272000" />
+      <workItem from="1583047277463" duration="7570000" />
+      <workItem from="1583127612330" duration="8849000" />
+      <workItem from="1583211431724" duration="13534000" />
+      <workItem from="1583301265955" duration="5572000" />
+      <workItem from="1583401270569" duration="1340000" />
+      <workItem from="1583469989855" duration="10437000" />
+      <workItem from="1583554713248" duration="1211000" />
+      <workItem from="1583556205208" duration="1819000" />
+      <workItem from="1583751026491" duration="92000" />
+      <workItem from="1583816264396" duration="13400000" />
+      <workItem from="1583848630096" duration="1243000" />
+      <workItem from="1583902280325" duration="12462000" />
+      <workItem from="1583991055700" duration="4554000" />
+      <workItem from="1584012726804" duration="2529000" />
+      <workItem from="1584078393648" duration="4913000" />
+      <workItem from="1584111560195" duration="23000" />
+      <workItem from="1584270018837" duration="1326000" />
+      <workItem from="1584333201361" duration="8081000" />
+      <workItem from="1584420684950" duration="6706000" />
     </task>
     <servers />
   </component>
@@ -638,34 +646,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="596" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582709508276" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1582612349145">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1584111579371">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582612349145" />
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1584111579371" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1581922685147">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1581922685147" />
-    <state x="655" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582867133579">
+    <state x="655" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1584420684961">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="655" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582867133579" />
-    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1577874929885">
+    <state x="655" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584420684961" />
+    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583820192367">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1577874929885" />
-    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579670923006">
+    <state x="619" y="150" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1583820192367" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584422363693">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1579670923006" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1582885603934">
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1584422363693" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1583992701883">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582885603934" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1582884901173">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583992701883" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584423587652">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582884901173" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584423587652" />
   </component>
   <component name="masterDetails">
     <states>

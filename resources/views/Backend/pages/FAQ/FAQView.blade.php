@@ -48,16 +48,7 @@
 
 @endsection
 @section('content')
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-    @endif
-    @if(session('fail'))
-        <div class="alert alert-danger">
-            {{session('fail')}}
-        </div>
-    @endif
+@include('sessionMsg.sessionMsg')
 <div class="bg-white p-3">
 
     <table class="table table-hover">
@@ -120,7 +111,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4" style="text-align: center"><i>NO DATA</i></td>
+                <td colspan="4" style="text-align: center"><i><code>NO DATA</code></i></td>
             </tr>
         @endforelse
         </tbody>

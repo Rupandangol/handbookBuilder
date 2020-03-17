@@ -5,16 +5,14 @@
 @endsection
 @section('content')
 
+
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+
         <div class="card">
+
             <h5 class="card-header">Update Admin</h5>
-            @if($errors->all())
-                <div class="alert alert-danger">
-                    @foreach($errors->all() as $error)
-                        -{{$error}}<br>
-                    @endforeach
-                </div>
-            @endif
+           @include('sessionMsg.validationError')
             <div class="card-body">
                 <form id="validationform" data-parsley-validate="" action="{{route('updateAdmin',$admin->id)}}"
                       method="post"

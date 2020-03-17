@@ -25,24 +25,27 @@
 @section('before-content')
     <br>
     {{--    section1--}}
-    <div class="container" style="width: 100%;max-width: 1920px;padding: 0;margin-top: -20px">
+    <div class="container" style="width: 100%;padding: 0;margin-top: -20px">
         <div
-            style="background-image: url('/uploads/backgroundImage/laptopBackground.jpg');background-repeat: no-repeat;background-size: 100% 100%; ">
+            style="background-image: url('/uploads/backgroundImage/handLaptop.jpg');background-repeat: no-repeat;background-size: 100% 100%; ">
             <div class="container">
                 <div
-                    style="margin-top: 20%;margin-bottom: 30%;font-family: 'ABeeZee', sans-serif;color: white;text-shadow: 0px 0px 10px red ;width: 60%">
-                    <h1 style="font-size: 50px">
-                        Document Builder
-                    </h1>
-                    <div style="font-size: 20px">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur debitis
-                            distinctio
-                            esse est et fuga libero minus molestiae nemo nesciunt numquam optio quaerat quam quas
-                            reiciendis,
-                            velit. Aliquid, veritatis!
-                        </p>
+                    style="margin-top: 12%;margin-bottom:10%;font-family: 'ABeeZee', sans-serif;color: white;text-shadow: 0px 0px 5px black ;width: 60%">
+                    <div style="">
+                        <h1 style="font-size: 50px">
+                            Your complete HR solution
+                        </h1>
+                        <div style="font-size: 20px">
+                            <p>
+                                Your talents are building your business, why not build them.
+                            </p>
+                            <div>
+                                <a href="{{route('loginUser')}}" class="btn btn-primary">Sign In</a>
+                                <a href="{{route('registerUser')}}" class="btn btn-primary">Sign Up</a>
+                            </div>
+                        </div>
                     </div>
+
                     <br><br>
                     <br><br>
                 </div>
@@ -85,58 +88,52 @@
 
             <div class="container">
                 <h1 style="text-align: center">Why Document Builder ? </h1><br><br>
-                <p style="font-size: 20px">Preparing Employee Handbook, Employment Contracts and other HR document can
-                    be a little overwhelming, specially when there is no legal help to proof read the policies. With
-                    Document Builder, you can prepare all these documents that are prepared by the registered lawyer
-                    of Nepal who specializes in Labor policies. You will save, time, money and access to the most
-                    updated policies to slide your way into professional Human Resource Management</p><br><br>
+                <p style="font-size: 20px">
+                    The Document Builder is a web-based system, you can revise, edit and customize your
+                    Employee Handbook, standard employment contract, offer letter, promotion letter,
+                    termination letter from any computer with a browser and internet facility. Once you
+                    finalize the document you can preview and download the document for your use.</p><br>
+                <h3>Advantages</h3><br>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="contact-inner"
-                             style="height: 320px;  border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
+                             style="height: 320px; margin-top: 10px; border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
                             <div class="contact-hd widget-ctn-hd"><br>
                                 <p></p>
                                 <h2 style="text-align: center"><i style="color: cornflowerblue; font-size: 30px"
-                                                                  class="fa fa-user-circle"></i><br>
-                                    <br>What to expect?</h2><br>
+                                                                  class="fa fa-compass"></i><br>
+                                    <br>Stay Compliant</h2><br>
                                 <p>
-                                    The Document Builder is a web-based system, you can revise, edit and customize your
-                                    Employee Handbook, standard employment contract, offer letter, promotion letter,
-                                    termination letter from any computer with a browser and internet facility. Once you
-                                    finalize the document you can preview and download the document for your use.
+                                    Easy navigation and edit option with one-time company name and logo input.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="contact-inner"
-                             style="height: 320px;  border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
+                             style="height: 320px; margin-top: 10px; border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
                             <div class="contact-hd widget-ctn-hd"><br>
                                 <p></p>
                                 <h2 style="text-align: center"><i style="color: cornflowerblue; font-size: 30px"
-                                                                  class="fa fa-user-circle"></i><br>
-                                    <br>Advantages</h2><br>
+                                                                  class="fa fa-money-bill-alt"></i><br>
+                                    <br>Customizable and Affordable</h2><br>
                                 <p>
-                                    - Easy navigation and edit option with one-time company name and logo input. <br>
-                                    - Stay compliant with updated policies regularly updated and revised by lawyers
-                                    directly in your handbook. <br>
-                                    - Customer Support to help you address any issues during your HR document revision.
+                                    Stay compliant with updated policies regularly updated and revised by lawyers
+                                    directly in your handbook.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="contact-inner"
-                             style="height: 320px;  border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
+                             style="height: 320px; margin-top: 10px; border-radius: 15px; box-shadow: 0 0 5px darkslategrey">
                             <div class="contact-hd widget-ctn-hd"><br>
                                 <p></p>
                                 <h2 style="text-align: center"><i style="color: cornflowerblue; font-size: 30px"
                                                                   class="fa fa-user-circle"></i><br>
-                                    <br>Heading</h2><br>
+                                    <br>Online Customer Support</h2><br>
                                 <p>
-                                    Fusce eget dolor id justo luctus commodo vel pharetra nisi. Donec velit libero
-                                    Fusce eget dolor id justo luctus commodo vel pharetra nisi. Donec velit libero
-                                    Fusce eget dolor id justo luctus commodo vel pharetra nisi. Donec velit libero
+                                    Customer Support to help you address any issues during your HR document revision.
                                 </p>
                             </div>
                         </div>
@@ -156,17 +153,20 @@
         <div class="container">
             <br><br>
             <h1 style="text-align: center">Easy way to create your Handbook</h1><br><br>
-            <p style="font-size: 16px;text-align: center">Get an updated, high-quality employee handbook for your company.
-                </p><br><br>
+            <p style="font-size: 16px;text-align: center">Get an updated, high-quality employee handbook for your
+                company.
+            </p><br><br>
 
             <div class="row">
                 <div class="col-md-6" style="text-align: center">
                     <span class="infoNumber" style="font-size: 100px;color: cornflowerblue;">1</span><br>
                     <h1>Customized
                         Handbook</h1>
-                    <p style="font-size: 16px" class="text-justify">Create a customized employee handbook for your company.
+                    <p style="font-size: 16px" class="text-justify">Create a customized employee handbook for your
+                        company.
                         A good handbook should reflect your company
-                        culture. Your policies should be clear and easy to understand. Having a solid employee handbooks is
+                        culture. Your policies should be clear and easy to understand. Having a solid employee handbooks
+                        is
                         important.</p><br>
 
                 </div>
@@ -194,7 +194,8 @@
                     <span class="infoNumber" style="font-size: 100px;color: cornflowerblue;">4</span><br>
                     <h1>Download
                         Document</h1>
-                    <p style="font-size: 16px" class="text-justify">Download your handbook as a Microsoft Word Document. You
+                    <p style="font-size: 16px" class="text-justify">Download your handbook as a Microsoft Word Document.
+                        You
                         should review your handbook with your
                         trusted advisiors and make any changes you deem necessary. If you need assistance, we're here to
                         help!</p><br>
@@ -213,10 +214,7 @@
                 <br><br><br><br>
                 <h1 style="text-align: center">Contact Us:</h1>
                 <br>
-                <p style="font-size: 20px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium amet
-                    animi commodi, error
-                    explicabo fuga in laborum minima modi nobis obcaecati perferendis possimus repellat sit ullam unde
-                    vero! Odio!</p>
+{{--                <p style="font-size: 20px">Any Queries for us, contact us </p>--}}
                 <br><br><br>
                 <div class="row">
 
@@ -225,9 +223,12 @@
                             <div class="col-md-7">
                                 <h3><img src="{{URL::to('uploads/logo/logo5.png')}}" style="width: 30px;height: 30px"
                                          alt=""> Talent Connects</h3>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam assumenda at cumque
-                                distinctio dolores eos fugit labore, nostrum odit porro quisquam repellat saepe ut
-                                veniam. Error placeat unde vero.
+                                Talent Connects Private Limited was established in February 2019 with the
+                                vision to bridge the TALENTS with the right jobs. Our core value focuses on how we can provide
+                                better candidates to our clients. So, we have established in-house training and development units
+                                where we provide skill-based training's required by the industry for fresh graduates or for working
+                                professionals. With this mission at heart, our company’s tagline is “Better Candidates | Better
+                                Business Growth”. Candidates stay longer if you hire through Talent Connects.
                             </div>
                             <div class="col-md-5">
                                 <div class="row">
@@ -241,8 +242,9 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-2"><i style="font-size: 35px" class="fa fa-phone"> </i></div>
-                                    <div class="col-md-10">+989898998 <br><br></div>
+                                    <div class="col-md-2"><i style="font-size: 35px" class="fa fa-phone-square"> </i>
+                                    </div>
+                                    <div class="col-md-10">+01-5524711 <br><br></div>
                                 </div>
                             </div>
                         </div>

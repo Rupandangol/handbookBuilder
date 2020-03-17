@@ -26,16 +26,7 @@
     Your Handbooks are listed below
 @endsection
 @section('content')
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-    @endif
-    @if(session('fail'))
-        <div class="alert alert-success">
-            {{session('fail')}}
-        </div>
-    @endif
+  @include('sessionMsg.sessionMsg')
     <div id="msg" class="alert alert-danger " hidden>
         <p>Choose correct Industry and Language</p>
     </div>
@@ -61,7 +52,7 @@
                                                 {{str_limit($value->about,200)}}
                                             </p>
                                         @else
-                                            <p>
+                                            <p style="color: white">
                                                 <i>Basic Information</i>
                                             </p>
                                         @endif

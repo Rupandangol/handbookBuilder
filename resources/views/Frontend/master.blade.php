@@ -6,10 +6,10 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="logo-area">
-                    <a href="#">
+                    <a href="{{route('frontend-dashboard')}}">
                         <h1 style="color: whitesmoke;"><img src="{{URL::to('/uploads/logo/logo4.png')}}"
                                                             style="width: 40px;height: 40px;" alt="">&nbsp; <span
-                                style="margin-top: 2px">Document Builder</span></h1>
+                                style="margin-top: 2px">HR Document Builder</span></h1>
                         {{--<img src="img/logo/logo.png" alt="asdf"/>--}}
                     </a>
                 </div>
@@ -53,6 +53,12 @@
                         {{--</div>--}}
                         {{--</div>--}}
                         {{--</li>--}}
+                        <li class="nav-item nc-al"><a id="logoutColor" href="{{url("https://talentconnects.com.np/")}}" target="_blank" role="button"
+                            ><span
+                                    style="font-size: 15px">Job Portal</span>
+
+                            </a>
+                        </li>
                         @if(Auth::guard('userList')->user())
                             <li class="nav-item nc-al"><a id="logoutColor" href="#" data-toggle="dropdown" role="button"
                                                           aria-expanded="false" class="nav-link dropdown-toggle"><span
@@ -61,6 +67,10 @@
                                 </a>
                                 <div role="menu" class="dropdown-menu message-dd notification-dd animated fadeIn">
                                     <div>
+                                        <div class="container">
+                                            <a href="{{route('frontend-dashboard')}}">Dashboard</a>
+                                        </div>
+                                        <hr>
                                         <div class="container">
                                             <a href="{{route('user-logout')}}">Logout</a>
                                         </div>
@@ -124,6 +134,12 @@
 
                                     </ul>
                                 </li>
+                                <li><a data-toggle="collapse" data-target="#" href="#">Resources</a>
+                                    <ul class="collapse dropdown-header-top">
+                                        <li><a href="">Resources</a></li>
+
+                                    </ul>
+                                </li>
                                 <li><a data-toggle="collapse" data-target="#" href="#">FAQ</a>
                                     <ul class="collapse dropdown-header-top">
                                         <li><a href="">FAQ</a></li>
@@ -151,62 +167,71 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li class="{{$dashboard_active??''}}"><a  href="{{route('frontend-dashboard')}}"><i class="notika-icon notika-house"></i> Home</a>
+                        <li class="{{$dashboard_active??''}}"><a href="{{route('frontend-dashboard')}}"><i
+                                    class="notika-icon notika-house"></i> Home</a>
                         </li>
-                        <li class=" {{$handbookList_active??''}} "><a data-toggle="tab" href="#handbookBuilder"><i class="notika-icon notika-star"></i>
+                        <li class=" {{$handbookList_active??''}} "><a data-toggle="tab" href="#handbookBuilder"><i
+                                    class="notika-icon notika-star"></i>
                                 Document
                                 Builder</a>
                         </li>
-                        <li class="{{$priceList_active??''}}"><a href="{{route('priceList')}}"><i class="notika-icon notika-menus"></i> Pricing</a>
+                        <li class="{{$priceList_active??''}}"><a href="{{route('priceList')}}"><i
+                                    class="notika-icon notika-menus"></i> Pricing</a>
                         </li>
-                        <li class="{{$contact_active??''}}"><a href="{{route('contact')}}"><i class="notika-icon notika-support"></i> Contact</a>
-                        </li>
-
-
-                        <li class="{{$FAQ_active??''}}"><a href="{{route('FAQ')}}"><i class="notika-icon notika-arrow-right"></i> FAQ</a>
+                        <li class="{{$contact_active??''}}"><a href="{{route('contact')}}"><i
+                                    class="notika-icon notika-support"></i> Contact</a>
                         </li>
 
-                        <li  class="{{$userInfoForm_active??''}}"><a data-toggle="tab" href="#mySettings"><i class="notika-icon notika-settings"></i> Settings</a>
+
+                        <li class="{{$frontendResourceList_active??''}}"><a href="{{route('resourceList')}}"><i
+                                    class="notika-icon notika-edit"></i> Resources</a>
+                        </li>
+                        <li class="{{$FAQ_active??''}}"><a href="{{route('FAQ')}}"><i
+                                    class="notika-icon notika-arrow-right"></i> FAQ</a>
+                        </li>
+
+                        <li class="{{$userInfoForm_active??''}}"><a data-toggle="tab" href="#mySettings"><i
+                                    class="notika-icon notika-settings"></i> Settings</a>
                         </li>
 
                     </ul>
                     <div class="tab-content custom-menu-content">
-{{--                        <div id="Home"--}}
-{{--                             class="tab-pane in notika-tab-menu-bg animated flipInX {{$dashboard_active??''}}">--}}
-{{--                            <ul class="notika-main-menu-dropdown">--}}
-{{--                                <li><a href="{{route('frontend-dashboard')}}">Dashboard One</a>--}}
-{{--                                </li>--}}
-{{--                                --}}{{--                                <li><a href="#">Dashboard Two</a>--}}
-{{--                                --}}{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
+                        {{--                        <div id="Home"--}}
+                        {{--                             class="tab-pane in notika-tab-menu-bg animated flipInX {{$dashboard_active??''}}">--}}
+                        {{--                            <ul class="notika-main-menu-dropdown">--}}
+                        {{--                                <li><a href="{{route('frontend-dashboard')}}">Dashboard One</a>--}}
+                        {{--                                </li>--}}
+                        {{--                                --}}{{--                                <li><a href="#">Dashboard Two</a>--}}
+                        {{--                                --}}{{--                                </li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </div>--}}
                         <div id="handbookBuilder"
                              class="tab-pane notika-tab-menu-bg animated flipInX {{$handbookList_active??''}} ">
                             <ul class="notika-main-menu-dropdown ">
                                 <li class="mySubNavbar"><a href="{{route('builderList')}}">Builder List</a></li>
-                                <li  class="mySubNavbar"><a href="{{route('myList')}}">My List</a></li>
+                                <li class="mySubNavbar"><a href="{{route('myList')}}">My List</a></li>
 
                             </ul>
                         </div>
-{{--                        <div id="pricing"--}}
-{{--                             class="tab-pane notika-tab-menu-bg animated flipInX {{$priceList_active??''}}">--}}
-{{--                            <ul class="notika-main-menu-dropdown">--}}
-{{--                                <li><a href="{{route('priceList')}}">List</a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                        <div id="contact" class="tab-pane notika-tab-menu-bg animated flipInX {{$contact_active??''}}">--}}
-{{--                            <ul class="notika-main-menu-dropdown">--}}
-{{--                                <li><a href="{{route('contact')}}">Contact Us</a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                        <div id="FAQ" class="tab-pane notika-tab-menu-bg animated flipInX {{$FAQ_active??''}}">--}}
-{{--                            <ul class="notika-main-menu-dropdown">--}}
-{{--                                <li><a href="{{route('FAQ')}}">FAQ</a>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
+                        {{--                        <div id="pricing"--}}
+                        {{--                             class="tab-pane notika-tab-menu-bg animated flipInX {{$priceList_active??''}}">--}}
+                        {{--                            <ul class="notika-main-menu-dropdown">--}}
+                        {{--                                <li><a href="{{route('priceList')}}">List</a>--}}
+                        {{--                                </li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </div>--}}
+                        {{--                        <div id="contact" class="tab-pane notika-tab-menu-bg animated flipInX {{$contact_active??''}}">--}}
+                        {{--                            <ul class="notika-main-menu-dropdown">--}}
+                        {{--                                <li><a href="{{route('contact')}}">Contact Us</a>--}}
+                        {{--                                </li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </div>--}}
+                        {{--                        <div id="FAQ" class="tab-pane notika-tab-menu-bg animated flipInX {{$FAQ_active??''}}">--}}
+                        {{--                            <ul class="notika-main-menu-dropdown">--}}
+                        {{--                                <li><a href="{{route('FAQ')}}">FAQ</a>--}}
+                        {{--                                </li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </div>--}}
                         <div id="mySettings"
                              class="tab-pane notika-tab-menu-bg animated flipInX {{$userInfoForm_active??''}}">
                             <ul class="notika-main-menu-dropdown">
@@ -240,7 +265,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                @if($dashboard_active??'')
+                                    <a id="easyCreate" style="float: right"  href="{{route('builderList')}}" title="Easy Create from builder List" class="btn btn-primary btn-lg">Create</a>
+
+                                @endif
                                 <div class="breadcomb-report">
                                     @yield('button-header')
                                 </div>

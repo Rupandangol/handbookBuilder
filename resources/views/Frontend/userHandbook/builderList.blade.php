@@ -6,15 +6,12 @@
     Builder List
 @endsection
 @section('lower-header')
+    Build by selecting any handbook or document that you need. <br>
     You can build any documents listed below:
 @endsection
 @section('content')
     <div class="row">
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{session('success')}}
-            </div>
-        @endif
+        @include('sessionMsg.sessionMsg')
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="modals-list">
                 <div class="modals-hd">
@@ -38,7 +35,7 @@
                                                     {{str_limit($value->about,200)}}
                                                 </p>
                                             @else
-                                                <p>
+                                                <p style="color: white">
                                                     <i>Basic Information</i>
                                                 </p>
                                             @endif
@@ -114,7 +111,7 @@
                                                 {{$value->about}}
 
                                             @else
-                                                <p>
+                                                <p style="color: white">
                                                     <i>Basic Information</i>
                                                 </p>
                                             @endif

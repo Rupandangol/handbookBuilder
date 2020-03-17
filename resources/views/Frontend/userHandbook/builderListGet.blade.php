@@ -3,10 +3,18 @@
     <i class="notika-icon notika-form"></i>
 @endsection
 @section('upper-header')
-    Handbook Select:
+    @if($project->type==='Handbook')
+        Handbook Select:
+    @else
+        Document Select:
+    @endif
 @endsection
 @section('lower-header')
-    Get your Handbook Easily
+    @if($project->type==='Handbook')
+        Get your Handbook Easily
+    @else
+        Get your Document Easily
+    @endif
 @endsection
 
 @section('my-header')
@@ -20,11 +28,10 @@
             <div class="modals-list">
                 <div class="modals-hd">
                     <h2>{{ucfirst($project->category)}}</h2>
-                    <p>asdfasdf asd fsad fsad fsadf</p>
+                    <p>{{str_limit($project->about,50)}}</p>
                 </div>
                 <div class="modals-single">
                     <div class="modal-df-hd">
-                        <p>A rendered modal with header, body, and set of actions in the footer.</p>
                     </div>
                     <div class="modals-default-notika">
                         <div class="modal-inner-pro">
@@ -69,6 +76,8 @@
                     <button id="payment-button" value="{{$project->id}}" class="btn btn-success btn-block">Pay by
                         Khalti
                     </button>
+
+                        <button class="btn btn-success btn-block">Pay by Esewa</button>
                 @endif
             </div>
         </div>
@@ -109,7 +118,7 @@
                                     swal('Thank you for downloading')
                                     setTimeout(function () {
                                         window.location.replace("{!! route('handbookList') !!}");
-                                    },1500);
+                                    }, 1500);
 
                                 }
                             });

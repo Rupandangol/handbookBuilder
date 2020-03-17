@@ -50,11 +50,14 @@
     <link rel="stylesheet" href="{{URL::to('/frontendLib/css/dialog/sweetalert2.min.css')}}">
     <script src="{{URL::to('frontendLib/js/vendor/modernizr-2.8.3.min.js')}}" type=""></script>
     <style>
-        #logoutColor, #msgColor:hover {
-            background-color: #3498db;
-            text-shadow: 0 0 20px blue;
+        #logoutColor:hover {
+            text-shadow: 0 0 15px white;
         }
+        #logoutColor, #msgColor{
+            background-color: #3498db;
 
+
+        }
         .mySubNavbar:hover {
             background-color: #c8d6e5;
             color: white;

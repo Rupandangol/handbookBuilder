@@ -17,7 +17,7 @@ class CreateUserHandbookContentTitlesTable extends Migration
             $table->Increments('id');
             $table->string('handbookContentTitle')->nullable();
             $table->integer('userHandbook_id')->unsigned()->nullable();
-            $table->string('order_by');
+            $table->integer('order_by');
             $table->string('include')->nullable();
             $table->timestamps();
             $table->foreign('userHandbook_id')->references('id')->on('user_handbooks')->onDelete('cascade')->onUpdate('cascade');

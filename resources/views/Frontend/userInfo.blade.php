@@ -16,11 +16,11 @@
             @foreach($errors->all() as $error)
                 <code>{{$error}}</code>
             @endforeach
-            <div class="cmp-tb-hd bcs-hd">
-                <h2>Basic Example</h2>
-                <p>Place one add-on or button on either side of an input. You may also place one on both sides of an
-                    input. </p>
-            </div>
+            {{--            <div class="cmp-tb-hd bcs-hd">--}}
+            {{--                <h2>Basic Example</h2>--}}
+            {{--                <p>Place one add-on or button on either side of an input. You may also place one on both sides of an--}}
+            {{--                    input. </p>--}}
+            {{--            </div>--}}
             <form autocomplete="off" method="post" enctype="multipart/form-data" action="{{route('userInfoForm')}}">
                 {{csrf_field()}}
 
@@ -85,7 +85,7 @@
                                     <label for="logo">Work Days in a week:</label>
 
                                     <select class="selectpicker" name="workDays" tabindex="-98">
-                                        <option  @if($userInfo->workDays==='1 Day') selected @endif>1 Day</option>
+                                        <option @if($userInfo->workDays==='1 Day') selected @endif>1 Day</option>
                                         <option @if($userInfo->workDays==='2 Days') selected @endif>2 Days</option>
                                         <option @if($userInfo->workDays==='3 Days') selected @endif>3 Days</option>
                                         <option @if($userInfo->workDays==='4 Days') selected @endif>4 Days</option>
@@ -126,33 +126,33 @@
                         </div>
 
 
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                        {{--                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+                        {{--                            <div class="form-group ic-cmp-int">--}}
 
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-next"></i>
-                                </div>
-                                <label for="logo">Do you want to include Social Security fund (SSF) Policy ? :</label>
-                                <div class="row">
+                        {{--                                <div class="form-ic-cmp">--}}
+                        {{--                                    <i class="notika-icon notika-next"></i>--}}
+                        {{--                                </div>--}}
+                        {{--                                <label for="logo">Do you want to include Social Security fund (SSF) Policy ? :</label>--}}
+                        {{--                                <div class="row">--}}
 
-                                    <div class=" col-md-1 form-check">
-                                        <input class=" form-check-input" type="radio" name="ssfOrNot"
-                                               value="Yes" @if($userInfo->ssfOrNot==='Yes') checked @endif>
-                                        <label class="form-check-label" for="ssfOrNot">
-                                            Yes
-                                        </label>
-                                    </div>
+                        {{--                                    <div class=" col-md-1 form-check">--}}
+                        {{--                                        <input class=" form-check-input" type="radio" name="ssfOrNot"--}}
+                        {{--                                               value="Yes" @if($userInfo->ssfOrNot==='Yes') checked @endif>--}}
+                        {{--                                        <label class="form-check-label" for="ssfOrNot">--}}
+                        {{--                                            Yes--}}
+                        {{--                                        </label>--}}
+                        {{--                                    </div>--}}
 
-                                    <div class=" col-md-1 form-check">
-                                        <input class=" form-check-input" type="radio" name="ssfOrNot"
-                                               value="No" @if($userInfo->ssfOrNot==='No') checked @endif >
-                                        <label class="form-check-label" for="ssfOrNot">
-                                            No
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {{--                                    <div class=" col-md-1 form-check">--}}
+                        {{--                                        <input class=" form-check-input" type="radio" name="ssfOrNot"--}}
+                        {{--                                               value="No" @if($userInfo->ssfOrNot==='No') checked @endif >--}}
+                        {{--                                        <label class="form-check-label" for="ssfOrNot">--}}
+                        {{--                                            No--}}
+                        {{--                                        </label>--}}
+                        {{--                                    </div>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
 
 
                     </div>
@@ -167,7 +167,8 @@
                                 <div class="nk-int-st">
                                     <label for="logo">Company Name:</label>
 
-                                    <input type="text" name="companyName" class="form-control"
+                                    <input type="text" name="companyName" value="{{old('companyName')??''}}"
+                                           class="form-control"
                                            placeholder="Company Name">
                                 </div>
                             </div>
@@ -183,7 +184,8 @@
                                 <div class="nk-int-st">
                                     <label for="logo">No of Employee:</label>
 
-                                    <input type="text" name="no_of_employee" class="form-control"
+                                    <input type="text" name="no_of_employee" value="{{old('no_of_employee')??''}}"
+                                           class="form-control"
                                            placeholder="Eg: 50">
                                 </div>
                             </div>
@@ -198,34 +200,59 @@
                                 <div class="nk-int-st">
                                     <label for="logo">Work Time:</label>
 
-                                    <input type="text" name="workTime" class="form-control"
+                                    <input type="text" name="workTime" value="{{old('workTime')??''}}"
+                                           class="form-control"
                                            placeholder="Eg: 9am to 6pm">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                        @if(old('workDays'))
 
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-next"></i>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-next"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label for="logo">Work Days in a week:</label>
+                                        <select class="selectpicker" name="workDays" tabindex="-98">
+                                            <option @if(old('workDays')==='1 Day') selected @endif>1 Day</option>
+                                            <option @if(old('workDays')==='2 Days') selected @endif>2 Days</option>
+                                            <option @if(old('workDays')==='3 Days') selected @endif>3 Days</option>
+                                            <option @if(old('workDays')==='4 Days') selected @endif>4 Days</option>
+                                            <option @if(old('workDays')==='5 Days') selected @endif>5 Days</option>
+                                            <option @if(old('workDays')==='6 Days') selected @endif>6 Days</option>
+                                            <option @if(old('workDays')==='7 Days') selected @endif>7 Days</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="nk-int-st">
-                                    <label for="logo">Work Days in a week:</label>
+                            </div>
+                        @else
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group ic-cmp-int">
 
-                                    <select class="selectpicker" name="workDays" tabindex="-98">
-                                        <option>1 Day</option>
-                                        <option>2 Days</option>
-                                        <option>3 Days</option>
-                                        <option>4 Days</option>
-                                        <option>5 Days</option>
-                                        <option selected>6 Days</option>
-                                        <option>7 Days</option>
-                                    </select>
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-next"></i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label for="logo">Work Days in a week:</label>
+                                        <select class="selectpicker" name="workDays" tabindex="-98">
+                                            <option>1 Day</option>
+                                            <option>2 Days</option>
+                                            <option>3 Days</option>
+                                            <option>4 Days</option>
+                                            <option>5 Days</option>
+                                            <option selected>6 Days</option>
+                                            <option>7 Days</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
-                        </div>
+                        @endif
 
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -255,33 +282,33 @@
                         </div>
 
 
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                        {{--                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
+                        {{--                            <div class="form-group ic-cmp-int">--}}
 
-                                <div class="form-ic-cmp">
-                                    <i class="notika-icon notika-next"></i>
-                                </div>
-                                <label for="logo">Do you want to include Social Security fund (SSF) Policy ? :</label>
-                                <div class="row">
+                        {{--                                <div class="form-ic-cmp">--}}
+                        {{--                                    <i class="notika-icon notika-next"></i>--}}
+                        {{--                                </div>--}}
+                        {{--                                <label for="logo">Do you want to include Social Security fund (SSF) Policy ? :</label>--}}
+                        {{--                                <div class="row">--}}
 
-                                    <div class=" col-md-1 form-check">
-                                        <input class=" form-check-input" type="radio" name="ssfOrNot"
-                                               value="Yes" checked>
-                                        <label class="form-check-label" for="ssfOrNot">
-                                            Yes
-                                        </label>
-                                    </div>
+                        {{--                                    <div class=" col-md-1 form-check">--}}
+                        {{--                                        <input class=" form-check-input" type="radio" name="ssfOrNot"--}}
+                        {{--                                               value="Yes" checked>--}}
+                        {{--                                        <label class="form-check-label" for="ssfOrNot">--}}
+                        {{--                                            Yes--}}
+                        {{--                                        </label>--}}
+                        {{--                                    </div>--}}
 
-                                    <div class=" col-md-1 form-check">
-                                        <input class=" form-check-input" type="radio" name="ssfOrNot"
-                                               value="No">
-                                        <label class="form-check-label" for="ssfOrNot">
-                                            No
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {{--                                    <div class=" col-md-1 form-check">--}}
+                        {{--                                        <input class=" form-check-input" type="radio" name="ssfOrNot"--}}
+                        {{--                                               value="No">--}}
+                        {{--                                        <label class="form-check-label" for="ssfOrNot">--}}
+                        {{--                                            No--}}
+                        {{--                                        </label>--}}
+                        {{--                                    </div>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
 
 
                     </div>

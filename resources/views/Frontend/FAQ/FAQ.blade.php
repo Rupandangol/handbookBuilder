@@ -58,6 +58,9 @@
                                 </div>
                                 <br><br>
                             @empty
+                                <div style="text-align: center">
+                                    <h1><i><code>Updating....</code></i></h1>
+                                </div>
                             @endforelse
                         </div>
                         <br><br><br>

@@ -1,18 +1,7 @@
 @extends('Backend.master')
 @section('content')
-    @if($errors->all())
-        <div class="alert alert-danger">
-            <h5>Error :</h5>
-            @foreach($errors->all() as $error)
-                <code style="color: #0a3c93">-{{$error}}</code><br>
-            @endforeach
-        </div>
-    @endif
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-    @endif
+    @include('sessionMsg.validationError')
+    @include('sessionMsg.sessionMsg')
     <div class="row">
         <div class="col-md-8">
             <h2>Lawyer Profile:</h2>

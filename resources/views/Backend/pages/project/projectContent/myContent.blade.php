@@ -90,8 +90,6 @@
             filebrowserUploadUrl: '',
             filebrowserUploadMethod: 'form',
             height: 500,
-
-
         });
         $(function () {
             var e = CKEDITOR.instances['myContent']

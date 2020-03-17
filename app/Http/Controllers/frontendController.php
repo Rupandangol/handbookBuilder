@@ -41,7 +41,7 @@ class frontendController extends Controller
             'no_of_employee' => 'required',
             'workTime' => 'required',
             'workDays' => 'required',
-            'ssfOrNot' => 'required',
+//            'ssfOrNot' => 'required',
             'no_of_sickLeave' => 'required',
         ]);
 

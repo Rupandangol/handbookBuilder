@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\UserForgotPassword;
 use App\Model\Admin;
 use App\Model\Frontend\UserList;
+use App\Rules\Captcha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -44,10 +45,13 @@ class userLoginController extends Controller
             'username' => 'required|min:3|unique:user_lists,username',
             'email' => 'required|unique:user_lists,email',
             'password' => 'required|min:5|confirmed',
+            'mobileNo'=>'required|max:9999999999',
+            'g-recaptcha-response'=>new Captcha(),
         ]);
         $data['username'] = $request->username;
         $data['email'] = $request->email;
         $data['password'] = bcrypt($request->password);
+        $data['mobileNo']=$request->mobileNo;
         $data['status'] = 1;
         if (UserList::create($data)) {
             return redirect(route('loginUser'));

@@ -87,6 +87,7 @@
 @section('content')
     @if(session('success'))
         <div class="alert alert-info">
+            <a href="" class="close" data-dissmiss="alert"></a>
             {{session('success')}}
         </div>
     @endif
@@ -96,6 +97,7 @@
     </div>
     <table class="table myBorderLess">
         <tr>
+            <th>SN</th>
             <th>Title</th>
             <th>Content</th>
             <th></th>
@@ -103,6 +105,7 @@
 
         @forelse($handbookContentTitle as $key=>$value)
             <tr>
+                <td>{{++$key}}</td>
                 <td>
                     <a href="#" class="handbookContentTitle" data-toggle="modal" data-target="#exampleModal{{$key}}">
                         {{ucfirst($value->handbookContentTitle)}}

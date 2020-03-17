@@ -12,6 +12,7 @@ use App\Model\Log;
 use App\Model\Project;
 use App\Model\ProjectContent;
 use App\Model\ProjectContentTitle;
+use App\Rules\Captcha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,7 @@ class backendController extends Controller
 {
     public function dashboard()
     {
-        $data['notification']=LawyerAppointment::orderBy('id','desc')->get();
+        $data['notification'] = LawyerAppointment::orderBy('id', 'desc')->get();
         $data['project'] = Project::all();
         $data['admin'] = Admin::all();
         $data['user_list'] = UserList::all();
@@ -47,7 +48,8 @@ class backendController extends Controller
             'username' => 'required|min:4|unique:admins,username',
             'email' => 'required|unique:admins,email',
             'password' => 'required|confirmed',
-            'privileges' => 'required'
+            'privileges' => 'required',
+            'g-recaptcha-response' => new Captcha()
         ]);
         $data['username'] = $request->username;
         $data['email'] = $request->email;
@@ -137,7 +139,7 @@ class backendController extends Controller
         $data['language'] = $request->language;
         $data['price'] = ucfirst($request->price);
         $data['about'] = $request->about;
-    if ($newProject = Project::create($data)) {
+        if ($newProject = Project::create($data)) {
             $item['admin_name'] = $data['project_created_by'];
             $item['activity'] = 'Created';
             $item['category_name'] = $data['category'];
@@ -226,7 +228,7 @@ class backendController extends Controller
         $clickedOrderNo = $clickedValue->order_by;
 
         if ($clickedOrderNo != '1') {
-            $upValue = ProjectContentTitle::where(['order_by' => $clickedOrderNo - 1])->where(['project_id' => $clickedValue->project_id])->first();
+            $upValue = ProjectContentTitle::where(['order_by' => $clickedOrderNo - 1, 'project_id' => $clickedValue->project_id])->first();
             $upValue->order_by = $upValue->order_by + 1;
             $clickedValue->order_by = $clickedValue->order_by - 1;
             $upValue->save();

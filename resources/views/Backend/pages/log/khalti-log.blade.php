@@ -1,7 +1,6 @@
 @extends('Backend.master')
 @section('my-header')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-
 @endsection
 @section('content')
     <table class="table table" id="khaltiLog">
@@ -61,7 +60,9 @@
             </tr>
         @empty
             <tr>
-                <td colspan="10"></td>
+                <td colspan="10" style="text-align: center">
+                    <h3>  <i>  <code>No Data</code></i></h3>
+                </td>
             </tr>
         @endforelse
         </tbody>

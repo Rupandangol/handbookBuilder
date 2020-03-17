@@ -31,6 +31,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Mobile Number</th>
                     <th scope="col">Status</th>
                     <th>About</th>
                     <th>Signed Up</th>
@@ -42,6 +43,7 @@
                         <th scope="row">{{++$key}}</th>
                         <td>{{$value->username}}</td>
                         <td>{{$value->email}}</td>
+                        <td>{{$value->mobileNo}}</td>
                         <td>
                             @if($value->status==='1')
                                 <button class="btn btn-success userStatus" value="{{$value->id}}"><i

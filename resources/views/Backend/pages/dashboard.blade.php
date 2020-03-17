@@ -2,6 +2,14 @@
 @section('heading')
     Dashboard
 @endsection
+@section('my-header')
+    <style>
+        .card:hover{
+            transition: transform1.2s;
+            transform: scale(1.025);
+        }
+    </style>
+    @endsection
 @section('content')
     {{--dashWidget--}}
 

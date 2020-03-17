@@ -195,18 +195,20 @@ class userHandbookController extends Controller
         $request->validate([
             'username' => "required|min:3|unique:user_lists,username,$id",
             'email' => "required|unique:user_lists,email,$id",
+            'mobileNo' => 'required',
             'currentPassword' => 'required',
             'password' => 'required|confirmed'
         ]);
         $data['username'] = $request->username;
         $data['email'] = $request->email;
         $data['password'] = bcrypt($request->password);
+        $data['mobileNo'] = $request->mobileNo;
         $currentPassword = $request->currentPassword;
         if ($userList = UserList::find($id)) {
             if (Hash::check($currentPassword, $userList->password)) {
                 $userList->update($data);
                 return redirect(route('frontend-dashboard'))->with('userListUpdated_msg', 'Updated');
-            }else{
+            } else {
                 return redirect()->back()->with('userListUpdated_msg', 'Incorrect Current Password');
 
             }
@@ -229,14 +231,15 @@ class userHandbookController extends Controller
 
     public function builderListSelect($id)
     {
+
+        $handbookList_active = 'active';
         $project = Project::find($id);
-        return view('Frontend.userHandbook.builderListGet', compact('project'));
+        return view('Frontend.userHandbook.builderListGet', compact('project', 'handbookList_active'));
     }
 
 
     public function builderListCreate($id)
     {
-        $created=0;
         if ($project = Project::find($id)) {
             $projectContentTitle = ProjectContentTitle::where(['project_id' => $project->id])->get();
             $dataHandbook['category'] = $project->category;
@@ -255,10 +258,12 @@ class userHandbookController extends Controller
                     $dataContentTitle['order_by'] = $value->order_by;
                     $dataContentTitle['include'] = 1;
                     if ($userHandbookContentTitle = UserHandbookContentTitle::create($dataContentTitle)) {
-                        $dataContent['handbook_content'] = $value->getContent->myProjectContent;
-                        $dataContent['handbook_title_id'] = $userHandbookContentTitle->id;
-                        UserHandbookContent::create($dataContent);
-                        $created=1;
+                        if ($value->getContent) {
+                            $dataContent['handbook_content'] = $value->getContent->myProjectContent;
+                            $dataContent['handbook_title_id'] = $userHandbookContentTitle->id;
+                            UserHandbookContent::create($dataContent);
+
+                        }
                     }
                 }
                 return redirect(route('handbookList'))->with('success', 'Thank you for Downloading Free Version!!');
@@ -304,7 +309,7 @@ class userHandbookController extends Controller
     {
         $handbookList_active = 'active';
         $project = Project::where(['projectStatus' => '1'])->distinct('category')->pluck('category');
-        $handbook = UserHandbook::where(['user_id' => Auth::guard('userList')->user()->id, 'deleteCode' => '0'])->get();
+        $handbook = UserHandbook::where(['user_id' => Auth::guard('userList')->user()->id, 'deleteCode' => '0'])->orderBy('id', 'DESC')->get();
         return view('Frontend.userHandbook.handbookList', compact('project', 'handbook', 'handbookList_active'));
     }
 

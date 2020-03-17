@@ -222,7 +222,7 @@
                             <div id="submenu-6" class="collapse submenu" style="background-color: white">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('projectLists')}}">All Project</a>
+                                        <a class="nav-link" href="{{route('projectLists')}}"><i class="fa fa-briefcase"></i>All Project</a>
                                     </li>
                                 </ul>
                             </div>
@@ -232,6 +232,21 @@
                             <a class="nav-link " href="{{route('FAQView')}}"><i
                                     class="fa fa-question-circle"></i>FAQ</a>
 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{$resource_active??''}}" href="#" data-toggle="collapse"
+                               aria-expanded="false"
+                               data-target="#submenu-7" aria-controls="submenu-7"><i class="fa fa-warehouse"></i>Resources</a>
+                            <div id="submenu-7" class="collapse submenu" style="background-color: white">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{{route('resourceAdd')}}"><i
+                                                class="fa fa-plus-circle"></i>Add Resources</a>
+                                        <a class="nav-link " href="{{route('resourceManage')}}"><i
+                                                class="fa fa-list-alt"></i>Manage Resources</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         @if(Auth::guard('admin')->user()->privileges!='Lawyer')
                             <li class="nav-item ">

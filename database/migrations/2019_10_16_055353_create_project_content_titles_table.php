@@ -17,7 +17,7 @@ class CreateProjectContentTitlesTable extends Migration
             $table->Increments('id');
             $table->string('contentTitle')->nullable();
             $table->integer('project_id')->unsigned()->nullable();
-            $table->string('order_by')->nullable();
+            $table->integer('order_by')->nullable();
             $table->timestamps();
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->onUpdate('cascade');
         });
